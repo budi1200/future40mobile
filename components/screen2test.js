@@ -10,11 +10,11 @@ import React, {Component} from 'react';
 import {Text, View} from 'react-native';
 import {Navigation} from 'react-native-navigation';
 
-export default class App extends Component {
+export default class screen2test extends Component {
   render() {
     return (
       <View>
-        <Text>Hello world 123!</Text>
+        <Text>World hello 321!</Text>
       </View>
     );
   }
