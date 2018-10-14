@@ -15,6 +15,8 @@ export default class DetailsStart extends Component {
 
     constructor(props){
         super(props);
+
+        this.state = {}
     }
 
     // Accespts sheet page name, returns state with data from google sheet
@@ -34,9 +36,9 @@ export default class DetailsStart extends Component {
     render() {
         return (
             <View>
-                {!this.state.corporations ? <h3 style={animStyles.fadeIn}>Loading</h3> : 
-                                            this.state.corporations.data.corporations.map((corporation) => {
-                                                return(<Text>{corporation.name}</Text>)
+                {!this.state.corporations ? <Text>Loading</Text> : 
+                                            this.state.corporations.data.corporations.map((corporation, index) => {
+                                                return(<Text key={index}>{corporation.name}</Text>)
                                             })}
             </View>
         );

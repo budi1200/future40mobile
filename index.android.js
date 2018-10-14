@@ -8,13 +8,13 @@ Navigation.startTabBasedApp({
     tabs: [
       {
         label: 'One',
-        screen: 'Screen1',
+        screen: 'Homescreen',
         icon: require('./components/img/icon1.png'),
         title: 'Screen One'
       },
       {
         label: 'Two',
-        screen: 'Screen2',
+        screen: 'DetailsStart',
         icon: require('./components/img/icon2.png'),
         title: 'Screen Two'
       }
