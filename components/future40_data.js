@@ -1,6 +1,9 @@
-import axios from 'react-native-axios';
+import firebase from 'firebase';
 
-// Accepts sheet name; returns google sheet data
-export default function getXFromSheet(sheet){
-    return axios.get(links.links[sheet]);
+// Accepts sheet name
+// Returns google sheet link from firebase database
+export function getSheetUrl(sheet, callback){
+		firebase.database().ref('/').once('value', (data) => {
+			return callback(data.val()[sheet])
+	});
 }

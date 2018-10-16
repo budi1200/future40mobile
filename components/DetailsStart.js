@@ -9,7 +9,7 @@
 import React, {Component} from 'react';
 import {Text, View} from 'react-native';
 
-import getXFromSheet from './future40_data';
+//import getXFromSheet from './future40_data';
 
 export default class DetailsStart extends Component {
 
@@ -20,17 +20,17 @@ export default class DetailsStart extends Component {
     }
 
     // Accespts sheet page name, returns state with data from google sheet
-    handleSheet = async(sheet) => {
+    /*handleSheet = async(sheet) => {
         getXFromSheet(sheet).then(result =>{
             this.setState({
                 [sheet]: result,
             });
         })
     }
-
+*/
     // Calls needed sheets
     componentWillMount() {
-        this.handleSheet("corporations");
+        //this.handleSheet("corporations");
     }
 
     render() {
