@@ -1,4 +1,3 @@
-import { links } from '../links';
 import axios from 'react-native-axios';
 
 // Accepts sheet name; returns google sheet data

@@ -40,6 +40,7 @@ export default class DetailsStart extends Component {
                                             this.state.corporations.data.corporations.map((corporation, index) => {
                                                 return(<Text key={index}>{corporation.name}</Text>)
                                             })}
+                
             </View>
         );
     }
