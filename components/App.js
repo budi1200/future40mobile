@@ -8,6 +8,7 @@
 
 import React, {Component} from 'react';
 import {Text, View, Button} from 'react-native';
+import {Navigation} from 'react-native-navigation';
 
 // Handle firebase connection
 import firebase from 'firebase';
@@ -15,6 +16,16 @@ import {config} from '../fireConn';
 firebase.initializeApp(config);
 
 export default class App extends Component {
+
+  static get options() {
+    return {
+      topBar: {
+        title: {
+          text: 'Welcome'
+        },
+      }
+    };
+  }
 
 	constructor(props){
   	super(props);
@@ -26,17 +37,18 @@ export default class App extends Component {
   
   // Change screen to MoreCorp **TEMP**
 	handleClick = () => {
-    this.props.navigator.push({
-      screen: 'MoreCorp',
-      title: 'MoreCorp',
-		});
+    Navigation.push(this.props.componentId, {
+      component: {
+        name: 'MoreCorp',
+      }
+    });
 	}
 
   render() {
     return (
       <View>
         <Text>Hello world 123!</Text>
-        <Text>v1.5</Text>
+        <Text>v2.0</Text>
 
         <Button onPress={this.handleClick} title="MoreCorp"/>
       </View>
