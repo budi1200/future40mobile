@@ -33,6 +33,7 @@ class DrawerButton extends Component{
 		}
 	}
 
+	// TODO: Add Icons next to button
 	render(){
 	    return(
 				<Button onPress={() => this.handleClick(this.props.screen)} title={this.props.text}/>

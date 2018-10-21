@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Dimensions, StyleSheet, Button } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+import { View, Text, StyleSheet } from 'react-native';
 
 import DrawerButton from './DrawerButton';
 export default class SideDrawer extends Component {
