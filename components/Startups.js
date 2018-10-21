@@ -15,7 +15,7 @@ import { getSheetUrl } from './future40_data';
 import axios from 'react-native-axios';
 import { addIconTopBar, handleButtonPress } from './customFunctions';
 
-export default class MoreCorp extends Component {
+export default class Startups extends Component {
 
 	constructor(props){
 		super(props)
