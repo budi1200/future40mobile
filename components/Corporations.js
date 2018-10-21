@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
+import {Text, ScrollView, View, TouchableNativeFeedback, Image, WebView} from 'react-native';
 import { Navigation } from 'react-native-navigation';
 
 import {getSheetUrl} from './future40_data';
@@ -15,16 +15,6 @@ import axios from 'react-native-axios';
 import { addIconTopBar, handleButtonPress } from './customFunctions';
 
 export default class MoreCorp extends Component {
-
-	static get options() {
-    return {
-      topBar: {
-        title: {
-          text: 'Welcome123'
-        },
-      }
-    };
-  }
 
 	constructor(props){
 		super(props)
@@ -35,6 +25,16 @@ export default class MoreCorp extends Component {
 			corporations: null
 		}
 	}
+
+	static get options() {
+    return {
+      topBar: {
+        title: {
+          text: 'Corporations'
+        },
+      }
+    };
+  }
 
 	navigationButtonPressed({ buttonId }) {
     handleButtonPress(buttonId);
@@ -61,14 +61,18 @@ export default class MoreCorp extends Component {
 
 	render() {
 		return (
-		  <View>
-		  	<Text>World hello 321!</Text>
+		  <ScrollView>
   	  		{this.state.corporations == null ? <Text>Loading</Text> : this.state.corporations.map((corporation, index) => {
   	  		  return(
-  	  		    <Text key={index}>{corporation.name}</Text>
+  	  		    <TouchableNativeFeedback key={index}>
+								<View>
+									<Image style={{ height: 128, width: 128, borderRadius: 50, resizeMode: 'contain'}} source={{ uri: corporation.logo }}/>
+									<Text>{corporation.name}</Text>
+								</View>
+							</TouchableNativeFeedback>
   	  		  )
   	  		})}
-		  </View>
+		  </ScrollView>
 		);
 	}
 }
