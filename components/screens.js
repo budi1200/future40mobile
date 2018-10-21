@@ -3,18 +3,27 @@ import { Navigation } from 'react-native-navigation';
 import App from './App';
 //import screen2test from './screen2test';
 
-import MoreCorp from './MoreCorp';
-import MoreStart from './MoreStart';
-import DetailsCorp from './DetailsCorp';
-import DetailsStart from './DetailsStart';
+import Schedule from './Schedule';
+import Corporations from './Corporations';
+import Startups from './Startups';
+import AboutSasa from './AboutSasa';
+import AboutFuture from './AboutFuture';
+import Stakeholders from './Stakeholders';
+import Interact from './Interact';
+
 import SideDrawer from './SideDrawer';
 
 export function registerScreens(){
     Navigation.registerComponent('HomeScreen', () => App);
-    //Navigation.registerComponent('Screen2', () => screen2test);
-    Navigation.registerComponent('MoreCorp', () => MoreCorp);
-    Navigation.registerComponent('MoreStart', () => MoreStart);
-    Navigation.registerComponent('DetailsCorp', () => DetailsCorp);
-    Navigation.registerComponent('DetailsStart', () => DetailsStart);
+    Navigation.registerComponent('Schedule', () => Schedule);
+    Navigation.registerComponent('Corporations', () => Corporations);
+    Navigation.registerComponent('Startups', () => Startups);
+    Navigation.registerComponent('AboutSasa', () => AboutSasa);
+    Navigation.registerComponent('AboutFuture', () => AboutFuture);
+    Navigation.registerComponent('Stakeholders', () => Stakeholders);
+    Navigation.registerComponent('Interact', () => Interact);
     Navigation.registerComponent('SideDrawer', () => SideDrawer);
+
+    //Navigation.registerComponent('DetailsCorp', () => DetailsCorp);
+    //Navigation.registerComponent('DetailsStart', () => DetailsStart);
 }

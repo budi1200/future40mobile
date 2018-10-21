@@ -24,8 +24,14 @@ export default class SideDrawer extends Component {
       <View style={ styles.container }>
         <Text> SideDrawer </Text>
 
-				<DrawerButton screen="HomeScreen" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen} icon="none" text="Home"/>
-				<DrawerButton screen="MoreCorp" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen} icon="none" text="More Corp"/>
+				<DrawerButton text="Home" icon="none" screen="HomeScreen" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
+				<DrawerButton text="Schedule" icon="none" screen="Schedule" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
+				<DrawerButton text="Corporations" icon="none" screen="Corporations" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
+				<DrawerButton text="Startups" icon="none" screen="Startups" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
+				<DrawerButton text="About Saša" icon="none" screen="AboutSasa" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
+				<DrawerButton text="About Future" icon="none" screen="AboutFuture" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
+				<DrawerButton text="Stakeholders" icon="none" screen="Stakeholders" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
+				<DrawerButton text="Interact" icon="none" screen="Interact" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
 				
       </View>
     )

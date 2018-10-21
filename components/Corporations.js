@@ -56,7 +56,7 @@ export default class MoreCorp extends Component {
 
 	componentDidMount(){
 		this.handleSheet("corporations");
-		addIconTopBar("MoreCorp");
+		addIconTopBar("Corporations");
 	}
 
 	render() {
