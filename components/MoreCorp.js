@@ -8,19 +8,37 @@
 
 import React, {Component} from 'react';
 import {Text, View} from 'react-native';
+import { Navigation } from 'react-native-navigation';
 
 import {getSheetUrl} from './future40_data';
 import axios from 'react-native-axios';
+import { addIconTopBar, handleButtonPress } from './customFunctions';
 
 export default class MoreCorp extends Component {
 
+	static get options() {
+    return {
+      topBar: {
+        title: {
+          text: 'Welcome123'
+        },
+      }
+    };
+  }
+
 	constructor(props){
 		super(props)
+
+		Navigation.events().bindComponent(this);
 
 		this.state = {
 			corporations: null
 		}
 	}
+
+	navigationButtonPressed({ buttonId }) {
+    handleButtonPress(buttonId);
+  }
 
 	// Accepts sheet name
 	// Calls getSheetUrl for sheet url
@@ -36,8 +54,9 @@ export default class MoreCorp extends Component {
 	  })
 	}
 
-	componentWillMount(){
-	  this.handleSheet("corporations");
+	componentDidMount(){
+		this.handleSheet("corporations");
+		addIconTopBar("MoreCorp");
 	}
 
 	render() {

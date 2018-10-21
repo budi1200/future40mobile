@@ -9,8 +9,10 @@ Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({
     root: {
       sideMenu: {
+        id: 'SideMenu',
         left: {
           component: {
+            id: 'SideDrawer',
             name: 'SideDrawer',
             passProps: {
               text: 'This is a left side menu screen'
@@ -19,10 +21,12 @@ Navigation.events().registerAppLaunchedListener(() => {
         },
         center: {
           stack: {
+            id: 'MainStack',
             children: [{
               component: {
+                id: 'HomeScreen',
                 name: 'HomeScreen'
-              },
+              }
             }]
           }
         }
