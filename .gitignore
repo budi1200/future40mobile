@@ -56,3 +56,5 @@ buck-out/
 *.jsbundle
 
 links.js
+
+android/app/google-services.json
