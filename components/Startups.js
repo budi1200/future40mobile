@@ -14,6 +14,7 @@ import ImageSvg from 'react-native-remote-svg'
 import { getSheetUrl } from './future40_data';
 import axios from 'react-native-axios';
 import { addIconTopBar, handleButtonPress } from './customFunctions';
+import LoadingCircle from './LoadingCircle';
 
 export default class Startups extends Component {
 
@@ -63,7 +64,7 @@ export default class Startups extends Component {
 	render() {
 		return (
 		  <ScrollView>
-  	  		{this.state.startups == null ? <Text>Loading</Text> : this.state.startups.map((startup, index) => {
+  	  		{this.state.startups == null ? <LoadingCircle/> : this.state.startups.map((startup, index) => {
   	  		  return(
   	  		    <TouchableNativeFeedback key={index}>
 								<View>

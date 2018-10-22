@@ -1,13 +1,11 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
-export const style = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#F5FCFF',
-    },
-    text: {
-        color: 'red'
-    }
-  });
+export const styles = StyleSheet.create({
+  inner: {
+    flex: 1,
+    alignSelf: 'stretch',
+    alignContent: 'center',
+    justifyContent: 'center',
+    height: Math.floor(Dimensions.get('window').height) - 179 // TODO: Dirty implementation
+  }
+})

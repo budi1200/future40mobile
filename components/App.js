@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import { Text, View, ScrollView, Image } from 'react-native';
+import { Text, View, ScrollView, Image, ActivityIndicator, StyleSheet } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import axios from 'react-native-axios';
 import moment from 'moment';
@@ -18,6 +18,7 @@ import firebase from 'firebase';
 import { config } from '../fireConn';
 import { getSheetUrl } from './future40_data';
 import { addIconTopBar, handleButtonPress } from './customFunctions';
+import {styles} from './styles';
 firebase.initializeApp(config);
 
 export default class App extends Component {
@@ -49,7 +50,7 @@ export default class App extends Component {
   }
 
   // Set options for screen
-  static get options() {
+  static options() {
     return {
       topBar: {
         leftButtons: [
@@ -73,20 +74,19 @@ export default class App extends Component {
   render() {
     return (
       <ScrollView>
-        <View><Text>Banner Placeholder</Text></View>
+          <View style={{flex: 1, height: 100, backgroundColor: 'yellow'}}><Text>Banner Placeholder</Text></View>
 
-  	  	{this.state.news == null ? <Text>Loading</Text> : this.state.news.map((news, index) => {
-          if(moment().isBetween(moment(news.show_from, "YYYY-MM-DD"), moment(news.show_to, "YYYY-MM-DD"), null, [])){
-            return(
-  	  	      <View key={index}>
-                <Text>{news.title}</Text>
-                <Image style={{ height: 200, width: 300, resizeMode: 'contain'}} source={{ uri: news.picture }}/>
-                <Text>{news.description}</Text>
-              </View>
-  	  	    )
-          }
-  	  	})}
-
+  	  	    {this.state.news == null ? <View style={styles.inner}><ActivityIndicator size="large" color="#00ff00"/></View> : this.state.news.map((news, index) => {
+              if(moment().isBetween(moment(news.show_from, "YYYY-MM-DD"), moment(news.show_to, "YYYY-MM-DD"), null, [])){
+                return(
+  	  	          <View key={index}>
+                    <Text style={{fontWeight: 'bold'}}>{news.title}</Text>
+                    <Image style={{ height: 200, width: 300, resizeMode: 'contain'}} source={{ uri: news.picture }}/>
+                    <Text>{news.description}</Text>
+                  </View>
+  	  	        )
+              }
+            })}
       </ScrollView>
     );
   }

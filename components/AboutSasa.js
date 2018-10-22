@@ -13,6 +13,7 @@ import { Navigation } from 'react-native-navigation';
 import { getSheetUrl } from './future40_data';
 import axios from 'react-native-axios';
 import { addIconTopBar, handleButtonPress } from './customFunctions';
+import LoadingCircle from './LoadingCircle';
 
 export default class AboutSasa extends Component {
 
@@ -62,7 +63,7 @@ export default class AboutSasa extends Component {
 	render() {
 		return (
 		  <ScrollView>
-  	  		{this.state.about == null ? <Text>Loading</Text> : this.state.about.map((about, index) => {
+  	  		{this.state.about == null ? <LoadingCircle/> : this.state.about.map((about, index) => {
             if(about.name == "Sasa"){
   	  		    return(
 						  		<View key={index}>

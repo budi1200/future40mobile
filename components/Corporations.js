@@ -13,6 +13,7 @@ import { Navigation } from 'react-native-navigation';
 import {getSheetUrl} from './future40_data';
 import axios from 'react-native-axios';
 import { addIconTopBar, handleButtonPress } from './customFunctions';
+import LoadingCircle from './LoadingCircle';
 
 export default class Corporations extends Component {
 
@@ -62,7 +63,7 @@ export default class Corporations extends Component {
 	render() {
 		return (
 		  <ScrollView>
-  	  		{this.state.corporations == null ? <Text>Loading</Text> : this.state.corporations.map((corporation, index) => {
+  	  		{this.state.corporations == null ? <LoadingCircle/> : this.state.corporations.map((corporation, index) => {
   	  		  return(
   	  		    <TouchableNativeFeedback key={index}>
 								<View>

@@ -13,6 +13,7 @@ import { Navigation } from 'react-native-navigation';
 import { getSheetUrl } from './future40_data';
 import axios from 'react-native-axios';
 import { addIconTopBar, handleButtonPress } from './customFunctions';
+import LoadingCircle from './LoadingCircle';
 
 export default class Interact extends Component {
 
@@ -62,7 +63,7 @@ export default class Interact extends Component {
 	render() {
 		return (
 		  <View>
-  	  		{this.state.vote == null ? <Text>Loading</Text> : this.state.vote.map((vote, index) => {
+  	  		{this.state.vote == null ? <LoadingCircle/> : this.state.vote.map((vote, index) => {
   	  		    return(
 						  		<View key={index} style={{ height: '100%', width: '100%' }}>
                     <WebView source={{ uri: vote.url }} javaScriptEnabled={true} startInLoadingState={true}/>
