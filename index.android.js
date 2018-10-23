@@ -17,7 +17,7 @@ Navigation.events().registerAppLaunchedListener(() => {
             id: 'SideDrawer',
             name: 'SideDrawer',
             passProps: {
-              text: 'This is a left side menu screen'
+              def: 'HomeScreen'
             }
           }
         },

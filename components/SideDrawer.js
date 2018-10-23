@@ -8,7 +8,7 @@ export default class SideDrawer extends Component {
 		super(props)
 
 		this.state = {
-			currentScreen: 'HomeScreen'
+			currentScreen: this.props.def
 		}
 	}
 

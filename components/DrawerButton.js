@@ -19,7 +19,7 @@ class DrawerButton extends Component{
 									id: 'SideDrawer',
 									name: 'SideDrawer',
 									passProps: {
-										text: 'This is a left side menu screen'
+										def: 'Schedule'
 									}
 								}
 							},
@@ -36,25 +36,27 @@ class DrawerButton extends Component{
 														name: 'Schedule',
 														options: {
 															bottomTab: {
-																text: 'Schedule',
-																icon: require('./img/icon1.png')
+																text: 'Day 1',
+																icon: require('./img/calendar.png'),
+																selectedIconColor: 'blue',
 															}
 														}
 													},
 												},
 												{
 													component: {
-														id: 'Schedule',
-														name: 'HomeScreen',
+														id: 'Schedule2',
+														name: 'Schedule2',
 														options: {
 															bottomTab: {
-																text: 'HomeScreen',
-																icon: require('./img/icon2.png')
+																text: 'Day 2',
+																icon: require('./img/calendar.png'),
+																selectedIconColor: 'blue',
 															}
 														}
 													},
 												},
-											],
+											]
 										}
 									}]
 								}
@@ -62,7 +64,18 @@ class DrawerButton extends Component{
 						}
 					}
 				});
+				
+				// TODO: Remove?
+				Navigation.mergeOptions( 'SideMenu', {
+					sideMenu: {
+						left: {
+							visible: false
+						}
+					}
+				})
+
 			}else{
+
 			// Changes screen
 			Navigation.setStackRoot('MainStack', {
 				component: {
@@ -70,6 +83,7 @@ class DrawerButton extends Component{
 					name: this.props.screen
 				}
 			});
+
 		}
 			// Updates current screen name
 			this.props.updateCurrentScreen(screen);
