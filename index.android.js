@@ -2,6 +2,8 @@
 
 import {Navigation} from 'react-native-navigation';
 import { registerScreens } from './components/screens';
+import { YellowBox } from 'react-native';
+YellowBox.ignoreWarnings(['Setting a timer']);
 
 registerScreens();
 
@@ -20,13 +22,14 @@ Navigation.events().registerAppLaunchedListener(() => {
           }
         },
         center: {
+          id: 'ChildTest',
           stack: {
             id: 'MainStack',
             children: [{
               component: {
                 id: 'HomeScreen',
                 name: 'HomeScreen'
-              }
+              },
             }]
           }
         }
