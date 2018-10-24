@@ -9,6 +9,7 @@
 import React, {Component} from 'react';
 import {Text, ScrollView, View, TouchableNativeFeedback, Image, WebView, Dimensions, StyleSheet} from 'react-native';
 import { Navigation } from 'react-native-navigation';
+import moment from 'moment';
 
 import {getSheetUrl} from './future40_data';
 import axios from 'react-native-axios';
@@ -60,9 +61,9 @@ export default class Schedule extends Component {
 
     var uniqueNames = [];
     
-    for(var i = 0; i < this.state.schedule.data.schedule.length; i++){    
-        if(uniqueNames.indexOf(moment(this.state.schedule.data.schedule[i].event_date).format('L')) === -1){
-            uniqueNames.push(moment(this.state.schedule.data.schedule[i].event_date).format('L'));    
+    for(var i = 0; i < this.state.schedule.length; i++){    
+        if(uniqueNames.indexOf(moment(this.state.schedule[i].event_date).format('L')) === -1){
+            uniqueNames.push(moment(this.state.schedule[i].event_date).format('L'));    
         }        
     }
 
@@ -84,13 +85,28 @@ export default class Schedule extends Component {
     addIconTopBar("Schedule");
   }
 
+  componentDidAppear() {
+    if(!this.props.first){
+      addIconTopBar("Schedule2")
+    }
+  }
+
 	render() {
 		return (
 		  <ScrollView>
-				{this.state.convertedDates ? this.state.convertedDates.map((date, index) =>{
-        	return(
-        	    <li className={this.isActive(index)} key={index}><a data-toggle="pill" href={"#" + moment(date, 'MM/DD/YYYY').format('DDMMYYYY')}><h3>{this.state.dayStrings[index]} <span>Day</span></h3><p>{moment(date, 'MM/DD/YYYY').format('DD MMM, YYYY')}</p></a></li>
-        	);
+				{this.state.schedule ? this.state.schedule.map((date, index) =>{
+          if(moment(date.event_date).format('YYYY-MM-DD') == moment(this.props.day).format('YYYY-MM-DD')){
+        	  return(
+              <TouchableNativeFeedback key={index}>
+        	      <View>
+                  <Text>{date.title}</Text>
+                  <View>
+                    <Text>{moment(date.time_from).format('HH:mm')} - {moment(date.time_to).format('HH:mm')}, {date.room}</Text>
+                  </View>
+                </View>
+              </TouchableNativeFeedback>
+        	  );
+          }
         }) : null} 
 		  </ScrollView>
 		);

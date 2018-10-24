@@ -34,6 +34,10 @@ class DrawerButton extends Component{
 													component: {
 														id: 'Schedule',
 														name: 'Schedule',
+														passProps: {
+															day: '2018-11-27',
+															first: true
+														},
 														options: {
 															bottomTab: {
 																text: 'Day 1',
@@ -46,7 +50,10 @@ class DrawerButton extends Component{
 												{
 													component: {
 														id: 'Schedule2',
-														name: 'Schedule2',
+														name: 'Schedule',
+														passProps: {
+															day: '2018-11-28'
+														},
 														options: {
 															bottomTab: {
 																text: 'Day 2',
