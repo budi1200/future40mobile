@@ -50,9 +50,33 @@ export default class Schedule extends Component {
 	    	axios.get(url).then(result => {
 	    	  this.setState({
 	    	      [sheet]: result.data[sheet],
-	    	  }, function(){ sheet == "schedule" ? console.log("a") : null})
+	    	  }, function(){ sheet == "schedule" ? this.getDates() : null})
 	    	})
 	  })
+	}
+	
+	// Returns state currentDates with sorted distinct dates from schedule page
+	getDates = () => {
+
+    var uniqueNames = [];
+    
+    for(var i = 0; i < this.state.schedule.data.schedule.length; i++){    
+        if(uniqueNames.indexOf(moment(this.state.schedule.data.schedule[i].event_date).format('L')) === -1){
+            uniqueNames.push(moment(this.state.schedule.data.schedule[i].event_date).format('L'));    
+        }        
+    }
+
+    uniqueNames.sort(function(a,b){
+        var da = new Date(a).getTime();
+        var db = new Date(b).getTime();
+        
+        return da < db ? -1 : da > db ? 1 : 0
+    });
+
+    this.setState({
+        convertedDates: uniqueNames
+    })
+
   }
 
 	componentDidMount(){
@@ -63,7 +87,11 @@ export default class Schedule extends Component {
 	render() {
 		return (
 		  <ScrollView>
-
+				{this.state.convertedDates ? this.state.convertedDates.map((date, index) =>{
+        	return(
+        	    <li className={this.isActive(index)} key={index}><a data-toggle="pill" href={"#" + moment(date, 'MM/DD/YYYY').format('DDMMYYYY')}><h3>{this.state.dayStrings[index]} <span>Day</span></h3><p>{moment(date, 'MM/DD/YYYY').format('DD MMM, YYYY')}</p></a></li>
+        	);
+        }) : null} 
 		  </ScrollView>
 		);
 	}
