@@ -12,6 +12,17 @@ export const styles = StyleSheet.create({
     flex: 0,
     flexDirection: 'row',
     height: 42,
-    alignItems: 'center'
+    alignItems: 'center',
+    marginLeft: 8,
+    marginRight: 8
+  },
+  buttonIcon: {
+    paddingLeft: 16,
+    paddingRight: 32
+  },
+  buttonText: {
+    paddingTop: 12,
+    paddingBottom: 12,
+    fontSize: 16
   }
 })

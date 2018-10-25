@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, TouchableNativeFeedback, View, Text } from 'react-native';
 import { Navigation } from 'react-native-navigation';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { styles } from './styles';
@@ -113,9 +114,9 @@ class DrawerButton extends Component{
 	render(){
 	    return(
 				<TouchableNativeFeedback>
-					<View style={styles.buttonContainer}>
-						<MaterialCommunityIcons name={this.props.icon} size={24}/>
-						<Text>{this.props.text}</Text>
+					<View style={[styles.buttonContainer, styles.buttonWrapper]}>
+						{this.props.icon == "home-outline" || this.props.icon == "lightbulb-on-outline" || this.props.icon == "checkbox-marked-outline" ? <MaterialCommunityIcons style={styles.buttonIcon} name={this.props.icon} size={24}/> : <MaterialIcons style={styles.buttonIcon} name={this.props.icon} size={24}/>}
+						<Text style={styles.buttonText}>{this.props.text}</Text>
 					</View>
 				</TouchableNativeFeedback>
 	    );

@@ -22,16 +22,16 @@ export default class SideDrawer extends Component {
 	render() {
     return (
       <View style={ styles.container }>
-        <Text> SideDrawer </Text>
+        <Text> Logo </Text>
 
 				<DrawerButton text="Home" icon="home-outline" screen="HomeScreen" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
-				<DrawerButton text="Schedule" icon="none" screen="Schedule" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
-				<DrawerButton text="Corporations" icon="none" screen="Corporations" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
-				<DrawerButton text="Startups" icon="none" screen="Startups" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
-				<DrawerButton text="About Saša" icon="none" screen="AboutSasa" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
-				<DrawerButton text="About Future" icon="none" screen="AboutFuture" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
-				<DrawerButton text="Stakeholders" icon="none" screen="Stakeholders" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
-				<DrawerButton text="Interact" icon="none" screen="Interact" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
+				<DrawerButton text="Schedule" icon="schedule" screen="Schedule" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
+				<DrawerButton text="Corporations" icon="business" screen="Corporations" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
+				<DrawerButton text="Startups" icon="lightbulb-on-outline" screen="Startups" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
+				<DrawerButton text="About Saša" icon="info-outline" screen="AboutSasa" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
+				<DrawerButton text="About Future" icon="perm-identity" screen="AboutFuture" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
+				<DrawerButton text="Stakeholders" icon="people-outline" screen="Stakeholders" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
+				<DrawerButton text="Interact" icon="checkbox-marked-outline" screen="Interact" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
 				
       </View>
     )
