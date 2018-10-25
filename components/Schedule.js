@@ -107,7 +107,7 @@ export default class Schedule extends Component {
               </TouchableNativeFeedback>
         	  );
           }
-        }) : null} 
+        }) : <LoadingCircle/>} 
 		  </ScrollView>
 		);
 	}
