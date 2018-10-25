@@ -24,7 +24,7 @@ export default class SideDrawer extends Component {
       <View style={ styles.container }>
         <Text> SideDrawer </Text>
 
-				<DrawerButton text="Home" icon="none" screen="HomeScreen" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
+				<DrawerButton text="Home" icon="home-outline" screen="HomeScreen" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
 				<DrawerButton text="Schedule" icon="none" screen="Schedule" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
 				<DrawerButton text="Corporations" icon="none" screen="Corporations" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
 				<DrawerButton text="Startups" icon="none" screen="Startups" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>

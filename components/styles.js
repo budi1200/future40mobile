@@ -7,5 +7,11 @@ export const styles = StyleSheet.create({
     alignContent: 'center',
     justifyContent: 'center',
     height: Math.floor(Dimensions.get('window').height) - 179 // TODO: Dirty implementation
+  },
+  buttonContainer: {
+    flex: 0,
+    flexDirection: 'row',
+    height: 42,
+    alignItems: 'center'
   }
 })

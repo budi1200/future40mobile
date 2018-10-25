@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { Button } from 'react-native';
+import { Button, TouchableNativeFeedback, View, Text } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
+import { styles } from './styles';
+
 class DrawerButton extends Component{
 
 	// Handles Drawer button click, accepts screen name
@@ -109,7 +112,12 @@ class DrawerButton extends Component{
 	// TODO: Add Icons next to button
 	render(){
 	    return(
-				<Button onPress={() => this.handleClick(this.props.screen)} title={this.props.text}/>
+				<TouchableNativeFeedback>
+					<View style={styles.buttonContainer}>
+						<MaterialCommunityIcons name={this.props.icon} size={24}/>
+						<Text>{this.props.text}</Text>
+					</View>
+				</TouchableNativeFeedback>
 	    );
 	}
 }
