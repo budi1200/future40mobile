@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
 
 import DrawerButton from './DrawerButton';
 export default class SideDrawer extends Component {
@@ -8,7 +8,7 @@ export default class SideDrawer extends Component {
 		super(props)
 
 		this.state = {
-			currentScreen: 'HomeScreen'
+			currentScreen: this.props.def
 		}
 	}
 
@@ -22,16 +22,18 @@ export default class SideDrawer extends Component {
 	render() {
     return (
       <View style={ styles.container }>
-        <Text> SideDrawer </Text>
+				<View>
+        	<Image style={{resizeMode: 'contain',height: 100, backgroundColor: 'red', padding: 5}} source={{ uri: 'https://www.future40.si/assets/img/logo.png' }}/>
+				</View>
 
-				<DrawerButton text="Home" icon="none" screen="HomeScreen" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
-				<DrawerButton text="Schedule" icon="none" screen="Schedule" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
-				<DrawerButton text="Corporations" icon="none" screen="Corporations" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
-				<DrawerButton text="Startups" icon="none" screen="Startups" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
-				<DrawerButton text="About Saša" icon="none" screen="AboutSasa" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
-				<DrawerButton text="About Future" icon="none" screen="AboutFuture" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
-				<DrawerButton text="Stakeholders" icon="none" screen="Stakeholders" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
-				<DrawerButton text="Interact" icon="none" screen="Interact" currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
+				<DrawerButton text="Home" icon="home-outline" screen="HomeScreen" active={this.state.currentScreen == "HomeScreen" ? true : false} currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
+				<DrawerButton text="Schedule" icon="schedule" screen="Schedule" active={this.state.currentScreen == "Schedule" ? true : false} currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
+				<DrawerButton text="Corporations" icon="business" screen="Corporations" active={this.state.currentScreen == "Corporations" ? true : false} currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
+				<DrawerButton text="Startups" icon="lightbulb-on-outline" screen="Startups" active={this.state.currentScreen == "Startups" ? true : false} currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
+				<DrawerButton text="About Saša" icon="info-outline" screen="AboutSasa" active={this.state.currentScreen == "AboutSasa" ? true : false} currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
+				<DrawerButton text="About Future" icon="perm-identity" screen="AboutFuture" active={this.state.currentScreen == "AboutFuture" ? true : false} currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
+				<DrawerButton text="Stakeholders" icon="people-outline" screen="Stakeholders" active={this.state.currentScreen == "Stakeholders" ? true : false} currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
+				<DrawerButton text="Interact" icon="checkbox-marked-outline" screen="Interact" active={this.state.currentScreen == "Interact" ? true : false} currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
 				
       </View>
     )

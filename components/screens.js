@@ -4,6 +4,7 @@ import App from './App';
 //import screen2test from './screen2test';
 
 import Schedule from './Schedule';
+import Schedule2 from './Schedule2';
 import Corporations from './Corporations';
 import Startups from './Startups';
 import AboutSasa from './AboutSasa';
@@ -16,6 +17,7 @@ import SideDrawer from './SideDrawer';
 export function registerScreens(){
     Navigation.registerComponent('HomeScreen', () => App);
     Navigation.registerComponent('Schedule', () => Schedule);
+    Navigation.registerComponent('Schedule2', () => Schedule2);
     Navigation.registerComponent('Corporations', () => Corporations);
     Navigation.registerComponent('Startups', () => Startups);
     Navigation.registerComponent('AboutSasa', () => AboutSasa);
