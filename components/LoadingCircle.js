@@ -5,7 +5,7 @@ import { styles } from './styles';
 export default class LoadingCircle extends Component{
   render(){
     return(
-      <View style={styles.inner}><ActivityIndicator size="large" color="#00ff00"/></View>
+      <View style={styles.inner}><ActivityIndicator size="large" color="#554bb9"/></View>
     );
   }
 }

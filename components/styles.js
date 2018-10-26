@@ -11,10 +11,11 @@ export const styles = StyleSheet.create({
   buttonContainer: {
     flex: 0,
     flexDirection: 'row',
-    height: 42,
+    height: 48,
     alignItems: 'center',
-    marginLeft: 8,
-    marginRight: 8
+    marginRight: 8,
+    borderTopRightRadius: 18,
+    borderBottomRightRadius: 18,
   },
   buttonIcon: {
     paddingLeft: 16,
@@ -23,6 +24,11 @@ export const styles = StyleSheet.create({
   buttonText: {
     paddingTop: 12,
     paddingBottom: 12,
-    fontSize: 16
+    fontSize: 16,
+    color: 'black',
+    fontWeight: '400'
+  },
+  active: {
+    backgroundColor: 'rgba(236, 57, 139, 0.24)'
   }
 })

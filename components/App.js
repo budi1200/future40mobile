@@ -19,6 +19,7 @@ import { config } from '../fireConn';
 import { getSheetUrl } from './future40_data';
 import { addIconTopBar, handleButtonPress } from './customFunctions';
 import {styles} from './styles';
+import LoadingCircle from './LoadingCircle';
 firebase.initializeApp(config);
 
 export default class App extends Component {
@@ -75,7 +76,7 @@ export default class App extends Component {
     return (
       <ScrollView>
           <View style={{flex: 1, height: 100, backgroundColor: 'yellow'}}><Text>Banner Placeholder</Text></View>
-  	  	    {this.state.news == null ? <View style={styles.inner}><ActivityIndicator size="large" color="#00ff00"/></View> : this.state.news.map((news, index) => {
+  	  	    {this.state.news == null ? <View style={styles.inner}><LoadingCircle/></View> : this.state.news.map((news, index) => {
               if(moment().isBetween(moment(news.show_from, "YYYY-MM-DD"), moment(news.show_to, "YYYY-MM-DD"), null, [])){
                 return(
   	  	          <View key={index}>
