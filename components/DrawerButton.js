@@ -110,7 +110,6 @@ class DrawerButton extends Component{
 		}
 	}
 
-	// TODO: Add Icons next to button
 	render(){
 	    return(
 				<TouchableNativeFeedback onPress={() => {this.handleClick(this.props.screen)}}>
