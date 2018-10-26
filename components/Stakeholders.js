@@ -85,7 +85,7 @@ export default class Stakeholders extends Component {
             <View key={index}>
               <Text style={{fontWeight: 'bold', fontSize: 24}}>{type}</Text>
               {this.state.sponsors.map((sponsor, index) => {
-                if(sponsor.sponsor_type == type && sponsor.mobile_hidden == false){
+                if(sponsor.sponsor_type == type && sponsor.hidden == false){
                   return(
                     <View key={index}>
                       <Image style={{ height: 64, width: 64, borderRadius: 50, resizeMode: 'contain'}} source={{ uri: sponsor.logo }}/>
