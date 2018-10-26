@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
 
 import DrawerButton from './DrawerButton';
 export default class SideDrawer extends Component {
@@ -22,7 +22,9 @@ export default class SideDrawer extends Component {
 	render() {
     return (
       <View style={ styles.container }>
-        <Text> Logo </Text>
+				<View>
+        	<Image style={{resizeMode: 'contain',height: 100, backgroundColor: 'red', padding: 5}} source={{ uri: 'https://www.future40.si/assets/img/logo.png' }}/>
+				</View>
 
 				<DrawerButton text="Home" icon="home-outline" screen="HomeScreen" active={this.state.currentScreen == "HomeScreen" ? true : false} currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
 				<DrawerButton text="Schedule" icon="schedule" screen="Schedule" active={this.state.currentScreen == "Schedule" ? true : false} currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
