@@ -14,6 +14,7 @@ import { getSheetUrl } from './future40_data';
 import axios from 'react-native-axios';
 import { addIconTopBar, handleButtonPress } from './customFunctions';
 import LoadingCircle from './LoadingCircle';
+import { styles } from './styles';
 
 export default class AboutSasa extends Component {
 
@@ -68,7 +69,9 @@ export default class AboutSasa extends Component {
   	  		    return(
 						  		<View key={index}>
 						  			<Image style={{ height: 128, width: 128, borderRadius: 50, resizeMode: 'contain'}} source={{ uri: about.picture }}/>
-						  			<Text>{about.description}</Text>
+						  			<View style={styles.aboutWrapper}>
+											<Text>{about.description}</Text>
+										</View>
 						  		</View>
   	  		    )
             }

@@ -79,10 +79,12 @@ export default class App extends Component {
   	  	    {this.state.news == null ? <View style={styles.inner}><LoadingCircle/></View> : this.state.news.map((news, index) => {
               if(moment().isBetween(moment(news.show_from, "YYYY-MM-DD"), moment(news.show_to, "YYYY-MM-DD"), null, [])){
                 return(
-  	  	          <View key={index}>
-                    <Text style={{fontWeight: 'bold'}}>{news.title}</Text>
-                    <Image style={{ height: 200, width: 300, resizeMode: 'contain'}} source={{ uri: news.picture }}/>
-                    <Text>{news.description}</Text>
+  	  	          <View key={index} style={styles.cardWrapper}>
+                    <Image style={{ height: 200, width: '100%', resizeMode: 'cover', alignSelf: 'center', borderTopLeftRadius: 8, borderTopRightRadius: 8}} source={{ uri: news.picture }}/>
+                    <View style={styles.cardTextWrapper}>
+                      <Text style={[styles.cardTitle, {fontWeight: 'bold'}]}>{news.title}</Text>
+                      <Text style={styles.cardDesc}>{news.description}</Text>
+                    </View>
                   </View>
   	  	        )
               }
