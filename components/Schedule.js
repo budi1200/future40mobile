@@ -15,6 +15,7 @@ import {getSheetUrl} from './future40_data';
 import axios from 'react-native-axios';
 import { addIconTopBar, handleButtonPress } from './customFunctions';
 import LoadingCircle from './LoadingCircle';
+import { styles } from './styles';
 
 export default class Schedule extends Component {
 
@@ -93,16 +94,22 @@ export default class Schedule extends Component {
 
 	render() {
 		return (
-		  <ScrollView>
-				{this.state.schedule ? this.state.schedule.map((date, index) =>{
-          if(moment(date.event_date).format('YYYY-MM-DD') == moment(this.props.day).format('YYYY-MM-DD')){
+		  <ScrollView style={{backgroundColor: 'white'}}>
+				{this.state.schedule ? this.state.schedule.map((event, index) =>{
+          if(moment(event.event_date).format('YYYY-MM-DD') == moment(this.props.day).format('YYYY-MM-DD')){
         	  return(
               <TouchableNativeFeedback key={index}>
-        	      <View>
-                  <Text>{date.title}</Text>
-                  <View>
-                    <Text>{moment(date.time_from).format('HH:mm')} - {moment(date.time_to).format('HH:mm')}, {date.room}</Text>
+        	      <View style={styles.scheduleWrapper}>
+
+                  <View style={styles.scheduleBigTimeWrapper}>
+                    <Text style={styles.scheduleBigTimeText}>{moment(event.time_from).format('HH:mm')}</Text>
                   </View>
+
+                  <View style={styles.scheduleInfoWrapper}>
+                    <Text style={styles.scheduleInfoText}>{event.title}</Text>
+                    <Text style={styles.scheduleInfoDesc}>{moment(event.time_from).format('HH:mm')} - {moment(event.time_to).format('HH:mm')} / <Text style={styles.scheduleInfoRoom}>{event.room}</Text></Text>
+                  </View>
+
                 </View>
               </TouchableNativeFeedback>
         	  );

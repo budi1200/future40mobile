@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, TouchableNativeFeedback, View, Text } from 'react-native';
+import { Image, TouchableNativeFeedback, View, Text } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -14,6 +14,16 @@ class DrawerButton extends Component{
 		// Prevents crash if clicking on already selected screen
 		if(screen != this.props.currentScreen){
 			if(screen == "Schedule"){
+				Navigation.setDefaultOptions({
+					bottomTabs: {
+						titleDisplayMode: 'alwaysShow',
+					},
+					bottomTab: {
+						selectedIconColor: 'rgb(236, 57, 139)',
+						selectedTextColor: 'rgb(236, 57, 139)'
+					}
+				});
+				
 				Navigation.setRoot({
 					root: {
 						sideMenu: {
@@ -33,6 +43,7 @@ class DrawerButton extends Component{
 									id: 'MainStack',
 									children: [{
 										bottomTabs: {
+											titleDisplayMode: 'alwaysShow',
 											children: [
 												{
 													component: {
@@ -45,8 +56,7 @@ class DrawerButton extends Component{
 														options: {
 															bottomTab: {
 																text: 'Day 1',
-																icon: require('./img/calendar.png'),
-																selectedIconColor: 'blue',
+																icon: require('./img/calendar27.png')
 															}
 														}
 													},
@@ -61,8 +71,7 @@ class DrawerButton extends Component{
 														options: {
 															bottomTab: {
 																text: 'Day 2',
-																icon: require('./img/calendar.png'),
-																selectedIconColor: 'blue',
+																icon: require('./img/calendar28.png')
 															}
 														}
 													},

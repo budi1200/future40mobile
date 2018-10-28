@@ -15,6 +15,7 @@ import { getSheetUrl } from './future40_data';
 import axios from 'react-native-axios';
 import { addIconTopBar, handleButtonPress } from './customFunctions';
 import LoadingCircle from './LoadingCircle';
+import { styles } from './styles';
 
 export default class Startups extends Component {
 
@@ -63,13 +64,13 @@ export default class Startups extends Component {
 
 	render() {
 		return (
-		  <ScrollView>
+		  <ScrollView style={{backgroundColor: 'white'}}>
   	  		{this.state.startups == null ? <LoadingCircle/> : this.state.startups.map((startup, index) => {
   	  		  return(
   	  		    <TouchableNativeFeedback key={index}>
-								<View>
-									{(startup.logo).slice(-3) === "svg" ? <ImageSvg style={{ height: 128, width: 128, borderRadius: 50 }} source={{ uri: startup.logo }}/> : <Image style={{ height: 128, width: 128, borderRadius: 50, resizeMode: 'contain'}} source={{ uri: startup.logo }}/>}
-									<Text>{startup.name}</Text>
+								<View style={styles.listCardWrapper}>
+									{(startup.logo).slice(-3) === "svg" ? <ImageSvg style={styles.listCardImage} source={{ uri: startup.logo }}/> : <Image style={[styles.listCardImage, {resizeMode: 'contain'}]} source={{ uri: startup.logo }}/>}
+									<Text style={styles.listCardText}>{startup.name}</Text>
 								</View>
 							</TouchableNativeFeedback>
   	  		  )

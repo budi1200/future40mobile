@@ -14,6 +14,7 @@ import {getSheetUrl} from './future40_data';
 import axios from 'react-native-axios';
 import { addIconTopBar, handleButtonPress } from './customFunctions';
 import LoadingCircle from './LoadingCircle';
+import { styles } from './styles';
 
 export default class Stakeholders extends Component {
 
@@ -78,19 +79,21 @@ export default class Stakeholders extends Component {
 
 	render() {
 		return (
-		  <ScrollView>
+		  <ScrollView style={{backgroundColor: 'white'}}>
 
         { this.state.uniqueTypes ? this.state.uniqueTypes.map((type, index) => {
           return(
             <View key={index}>
-              <Text style={{fontWeight: 'bold', fontSize: 24}}>{type}</Text>
-              {this.state.sponsors.map((sponsor, index) => {
+              <Text style={styles.stakeholdersTypeText}>{type}</Text>
+              {this.state.sponsors.map((sponsor, index2) => {
                 if(sponsor.sponsor_type == type && sponsor.hidden == false){
                   return(
-                    <View key={index}>
-                      <Image style={{ height: 64, width: 64, borderRadius: 50, resizeMode: 'contain'}} source={{ uri: sponsor.logo }}/>
-                      <Text>{sponsor.name}</Text>
-                    </View>
+                    <TouchableNativeFeedback key={index2}>
+                      <View style={styles.stakeholdersCardWrapper}>
+                        <Image style={styles.stakeholdersCardImage} source={{ uri: sponsor.logo }}/>
+                        <Text style={styles.stakeholdersCardText}>{sponsor.name}</Text>
+                      </View>
+                    </TouchableNativeFeedback>
                   )
                 }
               })}
