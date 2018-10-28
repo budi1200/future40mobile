@@ -27,3 +27,22 @@ export function handleButtonPress(buttonID){
     })
   }
 }
+
+export function changeScreen(data, currentScreen){
+  Navigation.push(currentScreen, {
+    component: {
+      name: 'Details',
+      passProps: {
+        data: data,
+        screenSource: currentScreen
+      },
+      options: {
+        topBar: {
+          title: {
+            text: 'Details: ' + data.name
+          }
+        }
+      }
+    }
+  });
+}

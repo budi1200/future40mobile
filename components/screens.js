@@ -11,8 +11,8 @@ import AboutSasa from './AboutSasa';
 import AboutFuture from './AboutFuture';
 import Stakeholders from './Stakeholders';
 import Interact from './Interact';
-
 import SideDrawer from './SideDrawer';
+import Details from './Details';
 
 export function registerScreens(){
     Navigation.registerComponent('HomeScreen', () => App);
@@ -25,6 +25,7 @@ export function registerScreens(){
     Navigation.registerComponent('Stakeholders', () => Stakeholders);
     Navigation.registerComponent('Interact', () => Interact);
     Navigation.registerComponent('SideDrawer', () => SideDrawer);
+    Navigation.registerComponent('Details', () => Details);
 
     //Navigation.registerComponent('DetailsCorp', () => DetailsCorp);
     //Navigation.registerComponent('DetailsStart', () => DetailsStart);

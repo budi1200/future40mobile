@@ -13,7 +13,7 @@ import ImageSvg from 'react-native-remote-svg'
 
 import { getSheetUrl } from './future40_data';
 import axios from 'react-native-axios';
-import { addIconTopBar, handleButtonPress } from './customFunctions';
+import { addIconTopBar, handleButtonPress, changeScreen } from './customFunctions';
 import LoadingCircle from './LoadingCircle';
 import { styles } from './styles';
 
@@ -67,7 +67,7 @@ export default class Startups extends Component {
 		  <ScrollView style={{backgroundColor: 'white'}}>
   	  		{this.state.startups == null ? <LoadingCircle/> : this.state.startups.map((startup, index) => {
   	  		  return(
-  	  		    <TouchableNativeFeedback key={index}>
+  	  		    <TouchableNativeFeedback key={index} onPress={() => {changeScreen(corporation, "Startups")}}>
 								<View style={styles.listCardWrapper}>
 									{(startup.logo).slice(-3) === "svg" ? <ImageSvg style={styles.listCardImage} source={{ uri: startup.logo }}/> : <Image style={[styles.listCardImage, {resizeMode: 'contain'}]} source={{ uri: startup.logo }}/>}
 									<Text style={styles.listCardText}>{startup.name}</Text>
