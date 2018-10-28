@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, StyleSheet } from 'react-native';
+import { View, Image, StyleSheet, Dimensions } from 'react-native';
 
 import DrawerButton from './DrawerButton';
 export default class SideDrawer extends Component {
@@ -43,7 +43,7 @@ export default class SideDrawer extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-		//width: Dimensions.get("window").width * 0.65,
+		width: Dimensions.get("window").width * 0.77,
 		height: '100%'
   }
 });

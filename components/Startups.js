@@ -64,12 +64,12 @@ export default class Startups extends Component {
 
 	render() {
 		return (
-		  <ScrollView>
+		  <ScrollView style={{backgroundColor: 'white'}}>
   	  		{this.state.startups == null ? <LoadingCircle/> : this.state.startups.map((startup, index) => {
   	  		  return(
   	  		    <TouchableNativeFeedback key={index}>
 								<View style={styles.listCardWrapper}>
-									{(startup.logo).slice(-3) === "svg" ? <ImageSvg style={styles.listCardImage} source={{ uri: startup.logo }}/> : <Image style={styles.listCardImage} source={{ uri: startup.logo }}/>}
+									{(startup.logo).slice(-3) === "svg" ? <ImageSvg style={styles.listCardImage} source={{ uri: startup.logo }}/> : <Image style={[styles.listCardImage, {resizeMode: 'contain'}]} source={{ uri: startup.logo }}/>}
 									<Text style={styles.listCardText}>{startup.name}</Text>
 								</View>
 							</TouchableNativeFeedback>

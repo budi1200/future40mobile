@@ -68,7 +68,7 @@ export default class AboutSasa extends Component {
             if(about.name == "Sasa"){
   	  		    return(
 						  		<View key={index}>
-						  			<Image style={{ height: 128, width: 128, borderRadius: 50, resizeMode: 'contain'}} source={{ uri: about.picture }}/>
+						  			<Image style={{ height: 250, resizeMode: 'contain'}} source={{ uri: about.picture }}/>
 						  			<View style={styles.aboutWrapper}>
 											<Text>{about.description}</Text>
 										</View>
