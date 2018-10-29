@@ -13,7 +13,7 @@ import moment from 'moment';
 
 import {getSheetUrl} from './future40_data';
 import axios from 'react-native-axios';
-import { addIconTopBar, handleButtonPress } from './customFunctions';
+import { addIconTopBar, handleButtonPress, detailsSchedule } from './customFunctions';
 import LoadingCircle from './LoadingCircle';
 import { styles } from './styles';
 
@@ -98,7 +98,7 @@ export default class Schedule extends Component {
 				{this.state.schedule ? this.state.schedule.map((event, index) =>{
           if(moment(event.event_date).format('YYYY-MM-DD') == moment(this.props.day).format('YYYY-MM-DD')){
         	  return(
-              <TouchableNativeFeedback key={index}>
+              <TouchableNativeFeedback key={index} onPress={() => {detailsSchedule(event, "MainStack")}}>
         	      <View style={styles.scheduleWrapper}>
 
                   <View style={styles.scheduleBigTimeWrapper}>

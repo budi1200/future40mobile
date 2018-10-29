@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, Image, View, WebView, StyleSheet, Dimensions, TouchableNativeFeedback} from 'react-native';
+import { ScrollView, Text, Image, View, WebView, StyleSheet, Dimensions, TouchableNativeFeedback, Linking} from 'react-native';
 import Carousel from 'react-native-banner-carousel';
 import { styles } from './styles';
 import HTML from 'react-native-render-html';
@@ -36,13 +36,18 @@ export default class Details extends Component{
         
         <View style={styles.detailsWrapper}>
           <Text style={styles.detailsTitle}>{this.props.data.name}</Text>
-          <HTML html={this.props.data.description} imagesMaxWidth={Dimensions.get('window').width} />
+          { this.props.data.description != '' ?
+            <HTML html={this.props.data.description} imagesMaxWidth={Dimensions.get('window').width} />
+          : null }
         </View>
-        <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple('rgba(85, 75, 185, .24)')}>
-          <View style={styles.detailsWebsiteWrapper}>
-            <Text style={styles.detailsWebsiteText}>WEBSITE</Text>
-          </View>
-        </TouchableNativeFeedback>
+        
+        { this.props.data.website != "" ?
+          <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple('rgba(85, 75, 185, .24)')}>
+            <View style={styles.detailsWebsiteWrapper}>
+              <Text style={styles.detailsWebsiteText} onPress={() => Linking.openURL(this.props.data.website)}>WEBSITE</Text>
+            </View>
+          </TouchableNativeFeedback>
+        : null }
       </ScrollView>
     );
   }

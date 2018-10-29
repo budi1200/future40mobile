@@ -181,6 +181,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     marginLeft: 8,
+    marginTop: 16,
     marginBottom: 16,
     padding: 8,
     alignSelf: 'flex-start',

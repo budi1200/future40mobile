@@ -46,3 +46,21 @@ export function changeScreen(data, currentScreen){
     }
   });
 }
+
+export function detailsSchedule(data, screen){
+  Navigation.push(screen, {
+    component: {
+      name: 'DetailsSchedule',
+      passProps: {
+        data: data
+      },
+      options: {
+        topBar: {
+          title: {
+            text: 'Details'
+          }
+        }
+      }
+    }
+  });
+}
