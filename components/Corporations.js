@@ -65,14 +65,16 @@ export default class Corporations extends Component {
 		return (
 		  <ScrollView style={{backgroundColor: 'white'}}>
   	  		{this.state.corporations == null ? <LoadingCircle/> : this.state.corporations.map((corporation, index) => {
-  	  		  return(
-  	  		    <TouchableNativeFeedback key={index} onPress={() => {changeScreen(corporation, "Corporations")}}>
-								<View style={styles.listCardWrapper}>
-									<Image style={styles.listCardImage} source={{ uri: corporation.logo }}/>
-									<Text style={styles.listCardText}>{corporation.name}</Text>
-								</View>
-							</TouchableNativeFeedback>
-  	  		  )
+						if(corporation.hidden == false){
+  	  		  	return(
+  	  		  	  <TouchableNativeFeedback key={index} onPress={() => {changeScreen(corporation, "Corporations")}}>
+									<View style={styles.listCardWrapper}>
+										<Image style={styles.listCardImage} source={{ uri: corporation.logo }}/>
+										<Text style={styles.listCardText}>{corporation.name}</Text>
+									</View>
+								</TouchableNativeFeedback>
+  	  		  	)
+						}
   	  		})}
 		  </ScrollView>
 		);

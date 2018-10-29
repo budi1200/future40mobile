@@ -66,14 +66,16 @@ export default class Startups extends Component {
 		return (
 		  <ScrollView style={{backgroundColor: 'white'}}>
   	  		{this.state.startups == null ? <LoadingCircle/> : this.state.startups.map((startup, index) => {
-  	  		  return(
-  	  		    <TouchableNativeFeedback key={index} onPress={() => {changeScreen(corporation, "Startups")}}>
-								<View style={styles.listCardWrapper}>
-									{(startup.logo).slice(-3) === "svg" ? <ImageSvg style={styles.listCardImage} source={{ uri: startup.logo }}/> : <Image style={[styles.listCardImage, {resizeMode: 'contain'}]} source={{ uri: startup.logo }}/>}
-									<Text style={styles.listCardText}>{startup.name}</Text>
-								</View>
-							</TouchableNativeFeedback>
-  	  		  )
+						if(startup.hidden == false){
+  	  		  	return(
+  	  		  	  <TouchableNativeFeedback key={index} onPress={() => {changeScreen(startup, "Startups")}}>
+									<View style={styles.listCardWrapper}>
+										{(startup.logo).slice(-3) === "svg" ? <ImageSvg style={styles.listCardImage} source={{ uri: startup.logo }}/> : <Image style={[styles.listCardImage, {resizeMode: 'contain'}]} source={{ uri: startup.logo }}/>}
+										<Text style={styles.listCardText}>{startup.name}</Text>
+									</View>
+								</TouchableNativeFeedback>
+  	  		  	)
+						}
   	  		})}
 		  </ScrollView>
 		);

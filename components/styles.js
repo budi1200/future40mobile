@@ -160,5 +160,34 @@ export const styles = StyleSheet.create({
     margin: 4,
     padding: 12,
     marginRight: 100
+  },
+
+  detailsWrapper: {
+    paddingLeft: 16
+  },
+  detailsTitle: {
+    fontSize: 21,
+    fontWeight: 'bold',
+    color: '#554bb9'
+  },
+  detailsDesc: {
+    paddingLeft: 4,
+    paddingRight: 24,
+    paddingBottom: 12,
+    fontSize: 14,
+    color: '#818181',
+  },
+  detailsWebsiteWrapper: {
+    flex: 1,
+    flexDirection: 'row',
+    marginLeft: 8,
+    marginBottom: 16,
+    padding: 8,
+    alignSelf: 'flex-start',
+  },
+  detailsWebsiteText: {
+    color: '#554bb9',
+    fontSize: 16,
+    fontWeight: 'bold',
   }
 })

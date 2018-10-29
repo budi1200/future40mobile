@@ -11,7 +11,6 @@ import { Text, View, ScrollView, Image, ActivityIndicator, StyleSheet } from 're
 import { Navigation } from 'react-native-navigation';
 import axios from 'react-native-axios';
 import moment from 'moment';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 // Handle firebase connection
 import firebase from 'firebase';
