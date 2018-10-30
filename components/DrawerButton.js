@@ -122,7 +122,7 @@ class DrawerButton extends Component{
 	render(){
 	    return(
 				<TouchableNativeFeedback onPress={() => {this.handleClick(this.props.screen)}}>
-					<View style={[styles.buttonContainer, styles.buttonWrapper, this.props.active ? styles.active : null]}>
+					<View style={[styles.buttonContainer, this.props.active ? styles.active : null]}>
 						{this.props.icon == "home-outline" || this.props.icon == "lightbulb-on-outline" || this.props.icon == "checkbox-marked-outline" ? <MaterialCommunityIcons style={styles.buttonIcon} name={this.props.icon} size={24} color={this.props.active ? 'black' : '#5f6368'}/> : <MaterialIcons style={styles.buttonIcon} name={this.props.icon} size={24} color={this.props.active ? 'black' : '#5f6368'}/>}
 						<Text style={styles.buttonText}>{this.props.text}</Text>
 					</View>
