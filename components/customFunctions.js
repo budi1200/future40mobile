@@ -27,3 +27,40 @@ export function handleButtonPress(buttonID){
     })
   }
 }
+
+export function changeScreen(data, currentScreen){
+  Navigation.push(currentScreen, {
+    component: {
+      name: 'Details',
+      passProps: {
+        data: data,
+        screenSource: currentScreen
+      },
+      options: {
+        topBar: {
+          title: {
+            text: 'Details: ' + data.name
+          }
+        }
+      }
+    }
+  });
+}
+
+export function detailsSchedule(data, screen){
+  Navigation.push(screen, {
+    component: {
+      name: 'DetailsSchedule',
+      passProps: {
+        data: data
+      },
+      options: {
+        topBar: {
+          title: {
+            text: 'Details'
+          }
+        }
+      }
+    }
+  });
+}

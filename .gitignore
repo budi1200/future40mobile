@@ -58,3 +58,5 @@ buck-out/
 links.js
 
 android/app/google-services.json
+android/app/future40key.keystore
+android/gradle.properties

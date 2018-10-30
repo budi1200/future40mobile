@@ -12,7 +12,7 @@ import { Navigation } from 'react-native-navigation';
 
 import {getSheetUrl} from './future40_data';
 import axios from 'react-native-axios';
-import { addIconTopBar, handleButtonPress } from './customFunctions';
+import { addIconTopBar, handleButtonPress, changeScreen } from './customFunctions';
 import LoadingCircle from './LoadingCircle';
 import { styles } from './styles';
 
@@ -40,7 +40,7 @@ export default class Corporations extends Component {
 
 	navigationButtonPressed({ buttonId }) {
     handleButtonPress(buttonId);
-  }
+	}
 
 	// Accepts sheet name
 	// Calls getSheetUrl for sheet url
@@ -65,14 +65,16 @@ export default class Corporations extends Component {
 		return (
 		  <ScrollView style={{backgroundColor: 'white'}}>
   	  		{this.state.corporations == null ? <LoadingCircle/> : this.state.corporations.map((corporation, index) => {
-  	  		  return(
-  	  		    <TouchableNativeFeedback key={index}>
-								<View style={styles.listCardWrapper}>
-									<Image style={styles.listCardImage} source={{ uri: corporation.logo }}/>
-									<Text style={styles.listCardText}>{corporation.name}</Text>
-								</View>
-							</TouchableNativeFeedback>
-  	  		  )
+						if(corporation.hidden == false){
+  	  		  	return(
+  	  		  	  <TouchableNativeFeedback key={index} onPress={() => {changeScreen(corporation, "Corporations")}}>
+									<View style={styles.listCardWrapper}>
+										<Image style={styles.listCardImage} source={{ uri: corporation.logo }}/>
+										<Text style={styles.listCardText}>{corporation.name}</Text>
+									</View>
+								</TouchableNativeFeedback>
+  	  		  	)
+						}
   	  		})}
 		  </ScrollView>
 		);
