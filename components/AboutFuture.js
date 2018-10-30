@@ -70,7 +70,8 @@ export default class AboutFuture extends Component {
 						  		<View key={index}>
 						  			<Image style={{ height: 250, resizeMode: 'contain'}} source={{ uri: about.picture }}/>
 										<View style={styles.aboutWrapper}>
-						  				<Text>{about.description}</Text>
+											<Text style={styles.aboutTitle}>Future 4.0</Text>
+						  				<Text style={styles.aboutDesc}>{about.description}</Text>
 										</View>
 						  		</View>
   	  		    )

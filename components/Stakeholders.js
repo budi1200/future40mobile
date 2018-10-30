@@ -91,7 +91,7 @@ export default class Stakeholders extends Component {
                     <TouchableNativeFeedback key={index2}>
                       <View style={styles.stakeholdersCardWrapper}>
                         <Image style={styles.stakeholdersCardImage} source={{ uri: sponsor.logo }}/>
-                        <Text style={styles.stakeholdersCardText}>{sponsor.name}</Text>
+                        <Text style={[styles.listCardText, styles.stakeholdersCardText]}>{sponsor.name}</Text>
                       </View>
                     </TouchableNativeFeedback>
                   )

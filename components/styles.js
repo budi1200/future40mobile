@@ -124,6 +124,15 @@ export const styles = StyleSheet.create({
     margin: 4,
     padding: 12
   },
+  aboutTitle: {
+    color: '#554bb9',
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 4,
+  },
+  aboutDesc: {
+    paddingLeft: 4,
+  },
 
   stakeholdersCardWrapper: {
     flex: 1,
@@ -163,12 +172,14 @@ export const styles = StyleSheet.create({
   },
 
   detailsWrapper: {
-    paddingLeft: 16
+    paddingLeft: 16,
+    paddingRight: 16
   },
   detailsTitle: {
     fontSize: 21,
     fontWeight: 'bold',
-    color: '#554bb9'
+    color: '#554bb9',
+    marginBottom: 4,
   },
   detailsDesc: {
     paddingLeft: 4,
@@ -190,5 +201,47 @@ export const styles = StyleSheet.create({
     color: '#554bb9',
     fontSize: 16,
     fontWeight: 'bold',
+  },
+
+  scheduleDetailsWrapper:{
+    paddingLeft: 16,
+  },
+  scheduleDetailsTopWrapper: {
+    borderBottomColor: '#dadce0',
+    borderBottomWidth: 1,
+    marginRight: 16
+  },
+  scheduleDetailsTitle: {
+    color: '#554bb9',
+    fontSize: 26,
+    fontWeight: 'bold',
+    paddingBottom: 8,
+  },
+  scheduleDetailsTime: {
+    color: '#606060',
+    fontSize: 16,
+    paddingBottom: 8,
+  },
+  scheduleDetailsTime2: {
+    color: '#ff72bb',
+    fontSize: 18,
+  },
+  scheduleDetailsLocation: {
+    color: 'black',
+    fontSize: 28,
+    paddingBottom: 6,
+    marginTop: 8,
+  },
+  scheduleDetailsDetails: {
+    paddingLeft: 2,
+    paddingTop: 6,
+    fontSize: 18,
+    color: 'black'
+  },
+  scheduleDetailsDesc: {
+    fontSize: 16,
+    color: '#818181',
+    padding: 6,
+    marginRight: 16,
   }
 })
