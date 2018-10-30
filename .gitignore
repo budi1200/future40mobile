@@ -58,3 +58,4 @@ buck-out/
 links.js
 
 android/app/google-services.json
+android/gradle.properties
