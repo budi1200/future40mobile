@@ -1,4 +1,4 @@
-package com.future40mobile;
+package com.future40;
 
 import com.reactnativenavigation.NavigationActivity;
 
