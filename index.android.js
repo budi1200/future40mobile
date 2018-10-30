@@ -5,6 +5,7 @@ import { registerScreens } from './components/screens';
 import { YellowBox } from 'react-native';
 YellowBox.ignoreWarnings(['Setting a timer']);
 
+console.log("android index !!!!!!!!!!!!!!!!!!!")
 registerScreens();
 
 Navigation.events().registerAppLaunchedListener(() => {
