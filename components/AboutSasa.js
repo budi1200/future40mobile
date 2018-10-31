@@ -32,7 +32,13 @@ export default class AboutSasa extends Component {
     return {
       topBar: {
         title: {
-          text: 'About Saša'
+          component: {
+            name: 'CustomTopBarTitle',
+            alignment: 'center',
+            passProps: {
+              title: 'About Saša'
+            }
+          }
         },
       }
     };

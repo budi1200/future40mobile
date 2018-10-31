@@ -50,17 +50,17 @@ export default class App extends Component {
   }
 
   // Set options for screen
-  static options() {
+	static get options() {
     return {
       topBar: {
-        leftButtons: [
-          {
-            id: "DrawerButton",
-            text: 'DrawerButton'
-          }
-        ],
         title: {
-          text: 'Welcome'
+          component: {
+            name: 'CustomTopBarTitle',
+            alignment: 'center',
+            passProps: {
+              title: 'Welcome'
+            }
+          }
         },
       }
     };

@@ -32,7 +32,13 @@ export default class Corporations extends Component {
     return {
       topBar: {
         title: {
-          text: 'Corporations'
+          component: {
+            name: 'CustomTopBarTitle',
+            alignment: 'center',
+            passProps: {
+              title: 'Corporations'
+            }
+          }
         },
       }
     };

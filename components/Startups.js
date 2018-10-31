@@ -33,7 +33,13 @@ export default class Startups extends Component {
     return {
       topBar: {
         title: {
-          text: 'Startups'
+          component: {
+            name: 'CustomTopBarTitle',
+            alignment: 'center',
+            passProps: {
+              title: 'Startups'
+            }
+          }
         },
       }
     };

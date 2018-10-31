@@ -31,7 +31,13 @@ export default class Interact extends Component {
     return {
       topBar: {
         title: {
-          text: 'Interact'
+          component: {
+            name: 'CustomTopBarTitle',
+            alignment: 'center',
+            passProps: {
+              title: 'Interact'
+            }
+          }
         },
       }
     };

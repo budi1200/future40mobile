@@ -32,7 +32,13 @@ export default class AboutFuture extends Component {
     return {
       topBar: {
         title: {
-          text: 'About Future'
+          component: {
+            name: 'CustomTopBarTitle',
+            alignment: 'center',
+            passProps: {
+              title: 'About Future'
+            }
+          }
         },
       }
     };

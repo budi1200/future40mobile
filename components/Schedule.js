@@ -33,7 +33,13 @@ export default class Schedule extends Component {
     return {
       topBar: {
         title: {
-          text: 'Schedule'
+          component: {
+            name: 'CustomTopBarTitle',
+            alignment: 'center',
+            passProps: {
+              title: 'Schedule'
+            }
+          }
         },
       }
     };

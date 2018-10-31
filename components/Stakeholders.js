@@ -32,7 +32,13 @@ export default class Stakeholders extends Component {
     return {
       topBar: {
         title: {
-          text: 'Stakeholders'
+          component: {
+            name: 'CustomTopBarTitle',
+            alignment: 'center',
+            passProps: {
+              title: 'Stakeholders'
+            }
+          }
         },
       }
     };

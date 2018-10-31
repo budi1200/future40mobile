@@ -12,6 +12,7 @@ import Interact from './Interact';
 import SideDrawer from './SideDrawer';
 import Details from './Details';
 import DetailsSchedule from './DetailsSchedule';
+import CustomTopBarTitle from './CustomTopBarTitle';
 
 export function registerScreens(){
     Navigation.registerComponent('HomeScreen', () => App);
@@ -25,4 +26,5 @@ export function registerScreens(){
     Navigation.registerComponent('SideDrawer', () => SideDrawer);
     Navigation.registerComponent('Details', () => Details);
     Navigation.registerComponent('DetailsSchedule', () => DetailsSchedule);
+    Navigation.registerComponent('CustomTopBarTitle', () => CustomTopBarTitle);
 }
