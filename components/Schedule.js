@@ -25,7 +25,7 @@ export default class Schedule extends Component {
 		Navigation.events().bindComponent(this);
 
     this.state = {
-      schedule: null
+      mounted: true
     };
   }
 
@@ -54,12 +54,14 @@ export default class Schedule extends Component {
 	// Fetches json at url
 	// Outputs state with sheets name
 	handleSheet = (sheet) => {
-	  	getSheetUrl(sheet, (url) => {
-	    	axios.get(url).then(result => {
-	    	  this.setState({
-	    	      [sheet]: result.data[sheet],
-	    	  }, function(){ sheet == "schedule" ? this.getDates() : null})
-	    	})
+	  getSheetUrl(sheet, (url) => {
+	  	axios.get(url).then(result => {
+        if(this.state.mounted){
+	  	    this.setState({
+	  	        [sheet]: result.data[sheet],
+          }, function(){ sheet == "schedule" ? this.getDates() : null})
+        }
+	  	})
 	  })
 	}
 	
@@ -90,6 +92,7 @@ export default class Schedule extends Component {
 	componentDidMount(){
 		this.handleSheet("schedule");
     addIconTopBar("Schedule");
+    addIconTopBar("Schedule2");
   }
 
   componentDidAppear() {
@@ -97,6 +100,12 @@ export default class Schedule extends Component {
       addIconTopBar("Schedule2")
     }
   }
+
+  componentWillUnmount(){
+		this.setState({
+			mounted: false
+		})
+	}
 
 	render() {
 		return (

@@ -24,7 +24,7 @@ export default class AboutSasa extends Component {
 		Navigation.events().bindComponent(this);
 
 		this.state = {
-			about: null
+			mounted: true
 		}
 	}
 
@@ -55,9 +55,11 @@ export default class AboutSasa extends Component {
 	handleSheet = (sheet) => {
 	  	getSheetUrl(sheet, (url) => {
 	    	axios.get(url).then(result => {
-	    	  this.setState({
-	    	      [sheet]: result.data[sheet],
-	    	  })
+					if(this.state.mounted){
+	    	  	this.setState({
+	    	  	    [sheet]: result.data[sheet],
+						})
+					}
 	    	})
 	  })
 	}
@@ -67,10 +69,16 @@ export default class AboutSasa extends Component {
 		addIconTopBar("AboutSasa");
 	}
 
+	componentWillUnmount(){
+		this.setState({
+			mounted: false
+		})
+	}
+
 	render() {
 		return (
 		  <ScrollView>
-  	  		{this.state.about == null ? <LoadingCircle/> : this.state.about.map((about, index) => {
+  	  		{!this.state.about ? <LoadingCircle/> : this.state.about.map((about, index) => {
             if(about.name == "Sasa"){
   	  		    return(
 						  		<View key={index}>

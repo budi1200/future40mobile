@@ -24,7 +24,7 @@ export default class Corporations extends Component {
 		Navigation.events().bindComponent(this);
 
 		this.state = {
-			corporations: null
+			mounted: true
 		}
 	}
 
@@ -55,9 +55,11 @@ export default class Corporations extends Component {
 	handleSheet = (sheet) => {
 	  	getSheetUrl(sheet, (url) => {
 	    	axios.get(url).then(result => {
-	    	  this.setState({
-	    	      [sheet]: result.data[sheet],
-	    	  })
+					if(this.state.mounted){
+	    	  	this.setState({
+	    	  	    [sheet]: result.data[sheet],
+						})
+					}
 	    	})
 	  })
 	}
@@ -67,10 +69,16 @@ export default class Corporations extends Component {
 		addIconTopBar("Corporations");
 	}
 
+	componentWillUnmount(){
+		this.setState({
+			mounted: false
+		})
+	}
+
 	render() {
 		return (
-		  <ScrollView style={{backgroundColor: 'white'}}>
-  	  		{this.state.corporations == null ? <LoadingCircle/> : this.state.corporations.map((corporation, index) => {
+		  <ScrollView style={{backgroundColor: 'white', marginTop: 4, marginBottom: 4}}>
+  	  		{!this.state.corporations ? <LoadingCircle/> : this.state.corporations.map((corporation, index) => {
 						if(corporation.hidden == false){
   	  		  	return(
   	  		  	  <TouchableNativeFeedback key={index} onPress={() => {changeScreen(corporation, "Corporations")}}>

@@ -24,7 +24,7 @@ export default class Stakeholders extends Component {
 		Navigation.events().bindComponent(this);
 
 		this.state = {
-			sponsors: null
+			mounted: true
 		}
 	}
 
@@ -55,9 +55,11 @@ export default class Stakeholders extends Component {
 	handleSheet = (sheet) => {
 	  	getSheetUrl(sheet, (url) => {
 	    	axios.get(url).then(result => {
-	    	  this.setState({
-	    	      [sheet]: result.data[sheet],
-	    	  }, function(){ sheet == "sponsors" ? this.getTypes() : null})
+          if(this.state.mounted){
+	    	    this.setState({
+	    	        [sheet]: result.data[sheet],
+            }, function(){ sheet == "sponsors" ? this.getTypes() : null})
+          }
 	    	})
 	  })
   }
@@ -81,6 +83,12 @@ export default class Stakeholders extends Component {
 	componentDidMount(){
 		this.handleSheet("sponsors");
 		addIconTopBar("Stakeholders");
+  }
+  
+  componentWillUnmount(){
+		this.setState({
+			mounted: false
+		})
 	}
 
 	render() {

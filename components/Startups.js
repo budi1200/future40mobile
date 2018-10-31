@@ -25,7 +25,7 @@ export default class Startups extends Component {
 		Navigation.events().bindComponent(this);
 
 		this.state = {
-			startups: null
+			mounted: true
 		}
 	}
 
@@ -56,9 +56,11 @@ export default class Startups extends Component {
 	handleSheet = (sheet) => {
 	  	getSheetUrl(sheet, (url) => {
 	    	axios.get(url).then(result => {
-	    	  this.setState({
-	    	      [sheet]: result.data[sheet],
-	    	  })
+					if(this.state.mounted){
+	    	  	this.setState({
+	    	  	    [sheet]: result.data[sheet],
+						})
+					}
 	    	})
 	  })
 	}
@@ -68,10 +70,16 @@ export default class Startups extends Component {
 		addIconTopBar("Startups");
 	}
 
+	componentWillUnmount(){
+		this.setState({
+			mounted: false
+		})
+	}
+
 	render() {
 		return (
 		  <ScrollView style={{backgroundColor: 'white'}}>
-  	  		{this.state.startups == null ? <LoadingCircle/> : this.state.startups.map((startup, index) => {
+  	  		{!this.state.startups ? <LoadingCircle/> : this.state.startups.map((startup, index) => {
 						if(startup.hidden == false){
   	  		  	return(
   	  		  	  <TouchableNativeFeedback key={index} onPress={() => {changeScreen(startup, "Startups")}}>

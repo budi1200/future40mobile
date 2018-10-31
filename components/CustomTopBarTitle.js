@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
 
+const styles = StyleSheet.create({
+  title: {
+    fontSize: 20,
+    color: 'black',
+  }
+})
 export default class CustomTopBarTitle extends Component{
   render(){
     return(
-      <Text>{this.props.title}</Text>
+      <Text style={styles.title}>{this.props.title}</Text>
     );
   }
 }

@@ -23,7 +23,7 @@ export default class Interact extends Component {
 		Navigation.events().bindComponent(this);
 
 		this.state = {
-			vote: null
+			mounted: true
 		}
 	}
 
@@ -54,9 +54,11 @@ export default class Interact extends Component {
 	handleSheet = (sheet) => {
 	  	getSheetUrl(sheet, (url) => {
 	    	axios.get(url).then(result => {
-	    	  this.setState({
-	    	      [sheet]: result.data[sheet],
-	    	  })
+					if(this.state.mounted){
+	    	  	this.setState({
+	    	  	    [sheet]: result.data[sheet],
+						})
+					}
 	    	})
 	  })
 	}
@@ -66,10 +68,16 @@ export default class Interact extends Component {
 		addIconTopBar("Interact");
 	}
 
+	componentWillUnmount(){
+		this.setState({
+			mounted: false
+		})
+	}
+
 	render() {
 		return (
 		  <View>
-  	  		{this.state.vote == null ? <LoadingCircle/> : this.state.vote.map((vote, index) => {
+  	  		{!this.state.vote ? <LoadingCircle/> : this.state.vote.map((vote, index) => {
   	  		    return(
 						  		<View key={index} style={{ height: '100%', width: '100%' }}>
                     <WebView source={{ uri: vote.url }} javaScriptEnabled={true} startInLoadingState={true}/>

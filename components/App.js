@@ -29,16 +29,18 @@ export default class App extends Component {
     Navigation.events().bindComponent(this);
 
     this.state = {
-      news: null
+      mounted: true
     }
   }
 
   handleSheet = (sheet) => {
     getSheetUrl(sheet, (url) => {
       axios.get(url).then(result => {
-        this.setState({
-            [sheet]: result.data[sheet],
-        })
+        if(this.state.mounted){
+          this.setState({
+              [sheet]: result.data[sheet],
+          })
+        }
       })
     })
   }
@@ -71,11 +73,18 @@ export default class App extends Component {
     this.handleSheet("news");
   }
 
+  componentWillUnmount(){
+    console.log("unmount")
+		this.setState({
+			mounted: false
+		})
+	}
+
   render() {
     return (
       <ScrollView>
           <View style={{flex: 1, height: 100, backgroundColor: 'yellow'}}><Text>Banner Placeholder</Text></View>
-  	  	    {this.state.news == null ? <View style={styles.inner}><LoadingCircle/></View> : this.state.news.map((news, index) => {
+  	  	    {!this.state.news ? <View style={styles.inner}><LoadingCircle/></View> : this.state.news.map((news, index) => {
               if(moment().isBetween(moment(news.show_from, "YYYY-MM-DD"), moment(news.show_to, "YYYY-MM-DD"), null, [])){
                 return(
   	  	          <View key={index} style={styles.cardWrapper}>
