@@ -1,6 +1,7 @@
 import { Navigation } from 'react-native-navigation'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
+// Adds icon to top bar, accepts screen name (string)
 export function addIconTopBar(screen){
     Promise.all([
         MaterialIcons.getImageSource('menu', 20, 'black')
@@ -16,6 +17,7 @@ export function addIconTopBar(screen){
       });
 }
 
+// handles drawer opening
 export function handleButtonPress(buttonID){
   if(buttonID === "DrawerButton"){
     Navigation.mergeOptions( 'SideMenu', {
@@ -28,6 +30,7 @@ export function handleButtonPress(buttonID){
   }
 }
 
+// opens details screen, accepts details data (object) and current screen (string)
 export function changeScreen(data, currentScreen){
   Navigation.push(currentScreen, {
     component: {
@@ -47,6 +50,7 @@ export function changeScreen(data, currentScreen){
   });
 }
 
+// opens details screen at schedule screen, accepts data (object), and current screen (string, should be schedule)
 export function detailsSchedule(data, screen){
   Navigation.push(screen, {
     component: {

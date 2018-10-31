@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, Image, View, WebView, StyleSheet, Dimensions, TouchableNativeFeedback, Linking} from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import moment from 'moment';
 
 import { styles } from './styles';

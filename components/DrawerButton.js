@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, TouchableNativeFeedback, View, Text } from 'react-native';
+import { TouchableNativeFeedback, View, Text } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';

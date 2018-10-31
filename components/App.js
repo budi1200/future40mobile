@@ -7,18 +7,19 @@
  */
 
 import React, { Component } from 'react';
-import { Text, View, ScrollView, Image, ActivityIndicator, StyleSheet } from 'react-native';
+import { Text, View, ScrollView, Image } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import axios from 'react-native-axios';
 import moment from 'moment';
 
-// Handle firebase connection
 import firebase from 'firebase';
 import { config } from '../fireConn';
+
+import LoadingCircle from './LoadingCircle';
 import { getSheetUrl } from './future40_data';
 import { addIconTopBar, handleButtonPress } from './customFunctions';
-import {styles} from './styles';
-import LoadingCircle from './LoadingCircle';
+import { styles } from './styles';
+
 firebase.initializeApp(config);
 
 export default class App extends Component {
@@ -31,24 +32,6 @@ export default class App extends Component {
     this.state = {
       mounted: true
     }
-  }
-
-  handleSheet = (sheet) => {
-    getSheetUrl(sheet, (url) => {
-      axios.get(url).then(result => {
-        if(this.state.mounted){
-          this.setState({
-              [sheet]: result.data[sheet],
-          })
-        }
-      })
-    })
-  }
-
-  // Handler for navigation button presses
-  navigationButtonPressed({ buttonId }) {
-    // Custom button handle function, accepts button id
-    handleButtonPress(buttonId);
   }
 
   // Set options for screen
@@ -67,14 +50,37 @@ export default class App extends Component {
       }
     };
   }
+
+  // Handler for navigation button presses
+  navigationButtonPressed({ buttonId }) {
+    // Custom button handle function, accepts button id
+    handleButtonPress(buttonId);
+  }
+
+  // Accepts sheet name
+	// Calls getSheetUrl for sheet url
+	// Fetches json at url
+	// Outputs state with sheets name
+  handleSheet = (sheet) => {
+    getSheetUrl(sheet, (url) => {
+      axios.get(url).then(result => {
+        if(this.state.mounted){
+          this.setState({
+              [sheet]: result.data[sheet],
+          })
+        }
+      })
+    })
+  }
   
   componentWillMount(){
-    addIconTopBar("HomeScreen");
+    // Loads sheet
     this.handleSheet("news");
+    // Adds icon in the top bar
+    addIconTopBar("HomeScreen");
   }
 
   componentWillUnmount(){
-    console.log("unmount")
 		this.setState({
 			mounted: false
 		})

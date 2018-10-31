@@ -7,13 +7,13 @@
  */
 
 import React, {Component} from 'react';
-import { Text, ScrollView, View, WebView } from 'react-native';
+import { View, WebView } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-
-import { getSheetUrl } from './future40_data';
 import axios from 'react-native-axios';
-import { addIconTopBar, handleButtonPress } from './customFunctions';
+
 import LoadingCircle from './LoadingCircle';
+import { getSheetUrl } from './future40_data';
+import { addIconTopBar, handleButtonPress } from './customFunctions';
 
 export default class Interact extends Component {
 
@@ -43,7 +43,9 @@ export default class Interact extends Component {
     };
   }
 
-	navigationButtonPressed({ buttonId }) {
+  // Handler for navigation button presses
+  navigationButtonPressed({ buttonId }) {
+    // Custom button handle function, accepts button id
     handleButtonPress(buttonId);
   }
 
@@ -64,7 +66,9 @@ export default class Interact extends Component {
 	}
 
 	componentDidMount(){
+		// Load sheet
 		this.handleSheet("vote");
+		// Adds icon in the top bar
 		addIconTopBar("Interact");
 	}
 

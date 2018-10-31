@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     alignSelf: 'stretch',
     alignContent: 'center',
     justifyContent: 'center',
-    height: Math.floor(Dimensions.get('window').height) - 179 // TODO: Dirty implementation
+    height: Math.floor(Dimensions.get('window').height) - 179
   },
 
   cardWrapper: {

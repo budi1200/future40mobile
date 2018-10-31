@@ -6,14 +6,14 @@
  * @flow
  */
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Text, ScrollView, View, Image } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-
-import { getSheetUrl } from './future40_data';
 import axios from 'react-native-axios';
-import { addIconTopBar, handleButtonPress } from './customFunctions';
+
 import LoadingCircle from './LoadingCircle';
+import { getSheetUrl } from './future40_data';
+import { addIconTopBar, handleButtonPress } from './customFunctions';
 import { styles } from './styles';
 
 export default class AboutFuture extends Component {
@@ -28,6 +28,7 @@ export default class AboutFuture extends Component {
 		}
 	}
 
+	// Set options for screen
 	static get options() {
     return {
       topBar: {
@@ -44,7 +45,9 @@ export default class AboutFuture extends Component {
     };
   }
 
-	navigationButtonPressed({ buttonId }) {
+  // Handler for navigation button presses
+  navigationButtonPressed({ buttonId }) {
+    // Custom button handle function, accepts button id
     handleButtonPress(buttonId);
   }
 
@@ -65,7 +68,9 @@ export default class AboutFuture extends Component {
 	}
 
 	componentDidMount(){
+		// Load sheet
 		this.handleSheet("about");
+		// Adds icon in the top bar
 		addIconTopBar("AboutFuture");
 	}
 

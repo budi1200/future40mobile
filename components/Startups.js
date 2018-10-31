@@ -45,7 +45,9 @@ export default class Startups extends Component {
     };
   }
 
-	navigationButtonPressed({ buttonId }) {
+  // Handler for navigation button presses
+  navigationButtonPressed({ buttonId }) {
+    // Custom button handle function, accepts button id
     handleButtonPress(buttonId);
   }
 
@@ -66,7 +68,9 @@ export default class Startups extends Component {
 	}
 
 	componentDidMount(){
+		// Load sheet
 		this.handleSheet("startups");
+		// Adds icon in the top bar
 		addIconTopBar("Startups");
 	}
 

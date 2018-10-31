@@ -6,14 +6,14 @@
  * @flow
  */
 
-import React, {Component} from 'react';
-import {Text, ScrollView, View, TouchableNativeFeedback, Image, Linking} from 'react-native';
+import React, { Component } from 'react';
+import { Text, ScrollView, View, TouchableNativeFeedback, Image, Linking } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-
-import {getSheetUrl} from './future40_data';
 import axios from 'react-native-axios';
-import { addIconTopBar, handleButtonPress } from './customFunctions';
+
 import LoadingCircle from './LoadingCircle';
+import { getSheetUrl } from './future40_data';
+import { addIconTopBar, handleButtonPress } from './customFunctions';
 import { styles } from './styles';
 
 export default class Stakeholders extends Component {
@@ -44,7 +44,9 @@ export default class Stakeholders extends Component {
     };
   }
 
-	navigationButtonPressed({ buttonId }) {
+  // Handler for navigation button presses
+  navigationButtonPressed({ buttonId }) {
+    // Custom button handle function, accepts button id
     handleButtonPress(buttonId);
   }
 
@@ -81,7 +83,9 @@ export default class Stakeholders extends Component {
   }
 
 	componentDidMount(){
-		this.handleSheet("sponsors");
+    // Load sheet
+    this.handleSheet("sponsors");
+    // Adds icon in the top bar
 		addIconTopBar("Stakeholders");
   }
   

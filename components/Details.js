@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, Image, View, WebView, StyleSheet, Dimensions, TouchableNativeFeedback, Linking} from 'react-native';
+import { ScrollView, Text, Image, View, Dimensions, TouchableNativeFeedback, Linking } from 'react-native';
 import Carousel from 'react-native-banner-carousel';
-import { styles } from './styles';
 import HTML from 'react-native-render-html';
+
+import { styles } from './styles';
 
 const ImageWidth = Dimensions.get('window').width;
 const ImageHeight = 250;
 export default class Details extends Component{
 
+  // Used in slideshow Carousel component
   renderPage(image, index) {
     return (
         <View key={index}>
@@ -16,15 +18,13 @@ export default class Details extends Component{
     );
   }
 
-  
   render(){
-
+    // adds image urls to array
     var slideshow = [];
     slideshow.push(this.props.data.logo)
     for (var i = 1; i <= 5; i++) {
       this.props.data["picture" + i] != "" ? slideshow.push(this.props.data["picture" + i]) : null ;
     }
-
 
     return(
       <ScrollView style={{backgroundColor: 'white'}}>

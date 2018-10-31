@@ -6,15 +6,15 @@
  * @flow
  */
 
-import React, {Component} from 'react';
-import {Text, ScrollView, View, TouchableNativeFeedback, Image, WebView, Dimensions, StyleSheet} from 'react-native';
+import React, { Component } from 'react';
+import { Text, ScrollView, View, TouchableNativeFeedback } from 'react-native';
 import { Navigation } from 'react-native-navigation';
+import axios from 'react-native-axios';
 import moment from 'moment';
 
-import {getSheetUrl} from './future40_data';
-import axios from 'react-native-axios';
-import { addIconTopBar, handleButtonPress, detailsSchedule } from './customFunctions';
 import LoadingCircle from './LoadingCircle';
+import { getSheetUrl } from './future40_data';
+import { addIconTopBar, handleButtonPress, detailsSchedule } from './customFunctions';
 import { styles } from './styles';
 
 export default class Schedule extends Component {
@@ -45,7 +45,9 @@ export default class Schedule extends Component {
     };
   }
 
-	navigationButtonPressed({ buttonId }) {
+  // Handler for navigation button presses
+  navigationButtonPressed({ buttonId }) {
+    // Custom button handle function, accepts button id
     handleButtonPress(buttonId);
   }
 
@@ -90,7 +92,9 @@ export default class Schedule extends Component {
   }
 
 	componentDidMount(){
-		this.handleSheet("schedule");
+    // Load sheet
+    this.handleSheet("schedule");
+    // Adds icon in the top bar
     addIconTopBar("Schedule");
     addIconTopBar("Schedule2");
   }

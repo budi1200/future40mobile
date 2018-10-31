@@ -6,14 +6,14 @@
  * @flow
  */
 
-import React, {Component} from 'react';
-import {Text, ScrollView, View, TouchableNativeFeedback, Image, WebView} from 'react-native';
+import React, { Component } from 'react';
+import { Text, ScrollView, View, TouchableNativeFeedback, Image } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-
-import {getSheetUrl} from './future40_data';
 import axios from 'react-native-axios';
-import { addIconTopBar, handleButtonPress, changeScreen } from './customFunctions';
+
 import LoadingCircle from './LoadingCircle';
+import { getSheetUrl } from './future40_data';
+import { addIconTopBar, handleButtonPress, changeScreen } from './customFunctions';
 import { styles } from './styles';
 
 export default class Corporations extends Component {
@@ -44,9 +44,11 @@ export default class Corporations extends Component {
     };
   }
 
-	navigationButtonPressed({ buttonId }) {
+  // Handler for navigation button presses
+  navigationButtonPressed({ buttonId }) {
+    // Custom button handle function, accepts button id
     handleButtonPress(buttonId);
-	}
+  }
 
 	// Accepts sheet name
 	// Calls getSheetUrl for sheet url
@@ -65,7 +67,9 @@ export default class Corporations extends Component {
 	}
 
 	componentDidMount(){
+		// Load sheet
 		this.handleSheet("corporations");
+		// Adds icon in the top bar
 		addIconTopBar("Corporations");
 	}
 
