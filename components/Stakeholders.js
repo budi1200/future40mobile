@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import { Text, ScrollView, View, TouchableNativeFeedback, Image, Linking } from 'react-native';
+import { Text, ScrollView, View, TouchableNativeFeedback, Image, Linking, Platform, TouchableHighlight } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import axios from 'react-native-axios';
 
@@ -105,14 +105,26 @@ export default class Stakeholders extends Component {
               <Text style={styles.stakeholdersTypeText}>{type}</Text>
               {this.state.sponsors.map((sponsor, index2) => {
                 if(sponsor.sponsor_type == type && sponsor.hidden == false){
-                  return(
-                    <TouchableNativeFeedback key={index2} onPress={() => {Linking.openURL(sponsor.website)}}>
-                      <View style={styles.stakeholdersCardWrapper}>
-                        <Image style={styles.stakeholdersCardImage} source={{ uri: sponsor.logo }}/>
-                        <Text style={[styles.listCardText, styles.stakeholdersCardText]}>{sponsor.name}</Text>
-                      </View>
-                    </TouchableNativeFeedback>
-                  )
+                  if(Platform.OS == "android"){
+                    return(
+                      <TouchableNativeFeedback key={index2} onPress={() => {Linking.openURL(sponsor.website)}}>
+                        <View style={styles.stakeholdersCardWrapper}>
+                          <Image style={styles.stakeholdersCardImage} source={{ uri: sponsor.logo }}/>
+                          <Text style={[styles.listCardText, styles.stakeholdersCardText]}>{sponsor.name}</Text>
+                        </View>
+                      </TouchableNativeFeedback>
+                    )
+                  }
+                  else{
+                    return(
+                      <TouchableHighlight underlayColor={'rgba(52,73,85,0.1)'} key={index2} onPress={() => {Linking.openURL(sponsor.website)}}>
+                          <View style={styles.stakeholdersCardWrapper}>
+                            <Image style={styles.stakeholdersCardImage} source={{ uri: sponsor.logo }}/>
+                            <Text style={[styles.listCardText, styles.stakeholdersCardText]}>{sponsor.name}</Text>
+                          </View>
+                      </TouchableHighlight>
+                    )
+                  }
                 }
               })}
             </View>

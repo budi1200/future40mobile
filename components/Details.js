@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, Image, View, Dimensions, TouchableNativeFeedback, Linking } from 'react-native';
+import { ScrollView, Text, Image, View, Dimensions, TouchableNativeFeedback, Linking, Platform, TouchableHighlight } from 'react-native';
 import Carousel from 'react-native-banner-carousel';
 import HTML from 'react-native-render-html';
 
@@ -41,13 +41,19 @@ export default class Details extends Component{
           : null }
         </View>
         
-        { this.props.data.website != "" ?
+        { this.props.data.website != "" ? Platform.OS == "android" ?
           <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple('rgba(85, 75, 185, .24)')}>
             <View style={styles.detailsWebsiteWrapper}>
               <Text style={styles.detailsWebsiteText} onPress={() => Linking.openURL(this.props.data.website)}>WEBSITE</Text>
             </View>
           </TouchableNativeFeedback>
-        : null }
+        : 
+          <TouchableHighlight underlayColor={'rgba(85, 75, 185, .24)'}>
+              <View style={styles.detailsWebsiteWrapper}>
+                <Text style={styles.detailsWebsiteText} onPress={() => Linking.openURL(this.props.data.website)}>WEBSITE</Text>
+              </View>
+          </TouchableHighlight>
+        : null}
       </ScrollView>
     );
   }

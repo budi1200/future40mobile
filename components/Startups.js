@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import { Text, ScrollView, View, TouchableNativeFeedback, Image } from 'react-native';
+import { Text, ScrollView, View, TouchableNativeFeedback, Image, Platform, TouchableHighlight} from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import ImageSvg from 'react-native-remote-svg'
 
@@ -85,14 +85,26 @@ export default class Startups extends Component {
 		  <ScrollView style={{backgroundColor: 'white'}}>
   	  		{!this.state.startups ? <LoadingCircle/> : this.state.startups.map((startup, index) => {
 						if(startup.hidden == false){
-  	  		  	return(
-  	  		  	  <TouchableNativeFeedback key={index} onPress={() => {changeScreen(startup, "Startups")}}>
-									<View style={styles.listCardWrapper}>
-										{(startup.logo).slice(-3) === "svg" ? <ImageSvg style={styles.listCardImage} source={{ uri: startup.logo }}/> : <Image style={[styles.listCardImage, {resizeMode: 'contain'}]} source={{ uri: startup.logo }}/>}
-										<Text style={styles.listCardText}>{startup.name}</Text>
-									</View>
-								</TouchableNativeFeedback>
-  	  		  	)
+							if(Platform.OS == "android"){
+  	  		  		return(
+  	  		  		  <TouchableNativeFeedback key={index} onPress={() => {changeScreen(startup, "Startups")}}>
+										<View style={styles.listCardWrapper}>
+											{(startup.logo).slice(-3) === "svg" ? <ImageSvg style={styles.listCardImage} source={{ uri: startup.logo }}/> : <Image style={[styles.listCardImage, {resizeMode: 'contain'}]} source={{ uri: startup.logo }}/>}
+											<Text style={styles.listCardText}>{startup.name}</Text>
+										</View>
+									</TouchableNativeFeedback>
+  	  		  		)
+							}
+							else{
+								return(
+  	  		  		  <TouchableHighlight underlayColor={'rgba(52,73,85,0.1)'} key={index} onPress={() => {changeScreen(startup, "Startups")}}>
+										<View style={styles.listCardWrapper}>
+											{(startup.logo).slice(-3) === "svg" ? <ImageSvg style={styles.listCardImage} source={{ uri: startup.logo }}/> : <Image style={[styles.listCardImage, {resizeMode: 'contain'}]} source={{ uri: startup.logo }}/>}
+											<Text style={styles.listCardText}>{startup.name}</Text>
+										</View>
+									</TouchableHighlight>
+								);
+							}
 						}
   	  		})}
 		  </ScrollView>

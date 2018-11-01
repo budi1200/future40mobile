@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import { Text, ScrollView, View, TouchableNativeFeedback, Image } from 'react-native';
+import { Text, ScrollView, View, TouchableNativeFeedback, Image, TouchableHighlight, Platform } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import axios from 'react-native-axios';
 
@@ -84,14 +84,26 @@ export default class Corporations extends Component {
 		  <ScrollView style={{backgroundColor: 'white', marginTop: 4, marginBottom: 4}}>
   	  		{!this.state.corporations ? <LoadingCircle/> : this.state.corporations.map((corporation, index) => {
 						if(corporation.hidden == false){
-  	  		  	return(
-  	  		  	  <TouchableNativeFeedback key={index} onPress={() => {changeScreen(corporation, "Corporations")}}>
-									<View style={styles.listCardWrapper}>
-										<Image style={styles.listCardImage} source={{ uri: corporation.logo }}/>
-										<Text style={styles.listCardText}>{corporation.name}</Text>
-									</View>
-								</TouchableNativeFeedback>
-  	  		  	)
+							if(Platform.OS == "android"){
+  	  		  		return(
+  	  		  		  <TouchableNativeFeedback key={index} onPress={() => {changeScreen(corporation, "Corporations")}}>
+										<View style={styles.listCardWrapper}>
+											<Image style={styles.listCardImage} source={{ uri: corporation.logo }}/>
+											<Text style={styles.listCardText}>{corporation.name}</Text>
+										</View>
+									</TouchableNativeFeedback>
+  	  		  		)
+							}
+							else{
+  	  		  		return(
+  	  		  		  <TouchableHighlight underlayColor={'rgba(52,73,85,0.1)'} key={index} onPress={() => {changeScreen(corporation, "Corporations")}}>
+										<View style={styles.listCardWrapper}>
+											<Image style={styles.listCardImage} source={{ uri: corporation.logo }}/>
+											<Text style={styles.listCardText}>{corporation.name}</Text>
+										</View>
+									</TouchableHighlight>
+  	  		  		)
+							}
 						}
   	  		})}
 		  </ScrollView>

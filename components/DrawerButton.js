@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableNativeFeedback, View, Text } from 'react-native';
+import { TouchableNativeFeedback, View, Text , Platform, TouchableHighlight} from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -43,7 +43,11 @@ class DrawerButton extends Component{
 									id: 'MainStack',
 									children: [{
 										bottomTabs: {
-											titleDisplayMode: 'alwaysShow',
+											options: {
+												topBar: {
+													visible: false
+												}
+											},
 											children: [
 												{
 													component: {
@@ -57,7 +61,7 @@ class DrawerButton extends Component{
 															bottomTab: {
 																text: 'Day 1',
 																icon: require('./img/calendar27.png')
-															}
+															},
 														}
 													},
 												},
@@ -120,6 +124,7 @@ class DrawerButton extends Component{
 	}
 
 	render(){
+		if(Platform.OS == "android"){
 	    return(
 				<TouchableNativeFeedback onPress={() => {this.handleClick(this.props.screen)}}>
 					<View style={[styles.buttonContainer, this.props.active ? styles.active : null]}>
@@ -127,7 +132,18 @@ class DrawerButton extends Component{
 						<Text style={styles.buttonText}>{this.props.text}</Text>
 					</View>
 				</TouchableNativeFeedback>
-	    );
+			);
+			}
+			else{
+				return(
+					<TouchableHighlight underlayColor={'rgba(52,73,85,0.1)'} onPress={() => {this.handleClick(this.props.screen)}}>
+						<View style={[styles.buttonContainer, this.props.active ? styles.active : null]}>
+							{this.props.icon == "home-outline" || this.props.icon == "lightbulb-on-outline" || this.props.icon == "checkbox-marked-outline" ? <MaterialCommunityIcons style={styles.buttonIcon} name={this.props.icon} size={24} color={this.props.active ? 'black' : '#5f6368'}/> : <MaterialIcons style={styles.buttonIcon} name={this.props.icon} size={24} color={this.props.active ? 'black' : '#5f6368'}/>}
+							<Text style={styles.buttonText}>{this.props.text}</Text>
+						</View>
+				</TouchableHighlight>
+				)
+			}
 	}
 }
 

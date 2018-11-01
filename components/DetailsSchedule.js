@@ -3,9 +3,7 @@ import { ScrollView, Text, View } from 'react-native';
 import moment from 'moment';
 
 import { styles } from './styles';
-
 export default class DetailsSchedule extends Component{
-
   render(){
     return(
       <ScrollView style={{backgroundColor: 'white'}}>

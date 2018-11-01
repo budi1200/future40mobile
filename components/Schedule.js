@@ -7,8 +7,9 @@
  */
 
 import React, { Component } from 'react';
-import { Text, ScrollView, View, TouchableNativeFeedback } from 'react-native';
+import { Text, ScrollView, View, TouchableNativeFeedback, Platform, TouchableHighlight } from 'react-native';
 import { Navigation } from 'react-native-navigation';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import axios from 'react-native-axios';
 import moment from 'moment';
 
@@ -17,6 +18,7 @@ import { getSheetUrl } from './future40_data';
 import { addIconTopBar, handleButtonPress, detailsSchedule } from './customFunctions';
 import { styles } from './styles';
 
+import { getStatusBarHeight } from 'react-native-status-bar-height';
 export default class Schedule extends Component {
 
 	constructor(props){
@@ -96,7 +98,6 @@ export default class Schedule extends Component {
     this.handleSheet("schedule");
     // Adds icon in the top bar
     addIconTopBar("Schedule");
-    addIconTopBar("Schedule2");
   }
 
   componentDidAppear() {
@@ -112,29 +113,66 @@ export default class Schedule extends Component {
 	}
 
 	render() {
-		return (
-		  <ScrollView style={{backgroundColor: 'white'}}>
-				{this.state.schedule ? this.state.schedule.map((event, index) =>{
-          if(moment(event.event_date).format('YYYY-MM-DD') == moment(this.props.day).format('YYYY-MM-DD')){
-        	  return(
-              <TouchableNativeFeedback key={index} onPress={() => {detailsSchedule(event, "MainStack")}}>
-        	      <View style={styles.scheduleWrapper}>
 
-                  <View style={styles.scheduleBigTimeWrapper}>
-                    <Text style={styles.scheduleBigTimeText}>{moment(event.time_from).format('HH:mm')}</Text>
-                  </View>
+    console.log(getStatusBarHeight());
+    if(Platform.OS == "android"){
+		  return (
+		    <ScrollView style={{backgroundColor: 'white'}}>
+		  		{this.state.schedule ? this.state.schedule.map((event, index) =>{
+            if(moment(event.event_date).format('YYYY-MM-DD') == moment(this.props.day).format('YYYY-MM-DD')){
+          	    return(
+                  <TouchableNativeFeedback key={index} onPress={() => {detailsSchedule(event, "MainStack")}}>
+          	        <View style={styles.scheduleWrapper}>
 
-                  <View style={styles.scheduleInfoWrapper}>
-                    <Text style={styles.scheduleInfoText}>{event.title}</Text>
-                    <Text style={styles.scheduleInfoDesc}>{moment(event.time_from).format('HH:mm')} - {moment(event.time_to).format('HH:mm')} / <Text style={styles.scheduleInfoRoom}>{event.room}</Text></Text>
-                  </View>
+                      <View style={styles.scheduleBigTimeWrapper}>
+                        <Text style={styles.scheduleBigTimeText}>{moment(event.time_from).format('HH:mm')}</Text>
+                      </View>
 
-                </View>
-              </TouchableNativeFeedback>
-        	  );
-          }
-        }) : <LoadingCircle/>} 
-		  </ScrollView>
-		);
+                      <View style={styles.scheduleInfoWrapper}>
+                        <Text style={styles.scheduleInfoText}>{event.title}</Text>
+                        <Text style={styles.scheduleInfoDesc}>{moment(event.time_from).format('HH:mm')} - {moment(event.time_to).format('HH:mm')} / <Text style={styles.scheduleInfoRoom}>{event.room}</Text></Text>
+                      </View>
+
+                    </View>
+                  </TouchableNativeFeedback>
+          	    );
+              }
+          }) : <LoadingCircle/>} 
+		    </ScrollView>
+      );
+    }
+    else{
+		  return (
+        <View>
+          <View style={{flex: 0, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center',paddingTop: getStatusBarHeight(), borderBottomColor: '#DCDEE2', borderBottomWidth: 1}}>
+            <MaterialIcons name="menu" color="#1078FF" size={20} style={{flex: 1, paddingLeft: 22}}/>
+            <Text style={{flex: 1, fontSize: 20, color: 'black', paddingLeft: 18, paddingTop: 10, paddingBottom: 10}}>Schedule</Text>
+            <View style={{flex: 1}}></View>
+          </View>
+		      <ScrollView style={{backgroundColor: 'white'}}>
+		  	  	{this.state.schedule ? this.state.schedule.map((event, index) =>{
+              if(moment(event.event_date).format('YYYY-MM-DD') == moment(this.props.day).format('YYYY-MM-DD')){
+            	    return(
+                    <TouchableHighlight underlayColor={'rgba(52,73,85,0.1)'} key={index} onPress={() => {detailsSchedule(event, "MainStack")}}>
+            	        <View style={styles.scheduleWrapper}>
+
+                        <View style={styles.scheduleBigTimeWrapper}>
+                          <Text style={styles.scheduleBigTimeText}>{moment(event.time_from).format('HH:mm')}</Text>
+                        </View>
+
+                        <View style={styles.scheduleInfoWrapper}>
+                          <Text style={styles.scheduleInfoText}>{event.title}</Text>
+                          <Text style={styles.scheduleInfoDesc}>{moment(event.time_from).format('HH:mm')} - {moment(event.time_to).format('HH:mm')} / <Text style={styles.scheduleInfoRoom}>{event.room}</Text></Text>
+                        </View>
+
+                      </View>
+                    </TouchableHighlight>
+            	    );
+                }
+            }) : <LoadingCircle/>} 
+		      </ScrollView>
+        </View>
+      );
+    }
 	}
 }
