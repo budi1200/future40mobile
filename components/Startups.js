@@ -97,7 +97,7 @@ export default class Startups extends Component {
 							}
 							else{
 								return(
-  	  		  		  <TouchableHighlight underlayColor={'rgba(52,73,85,0.1)'} key={index} onPress={() => {changeScreen(startup, "Startups")}}>
+  	  		  		  <TouchableHighlight underlayColor={'rgba(52,73,85,0.05)'} key={index} onPress={() => {changeScreen(startup, "Startups")}}>
 										<View style={styles.listCardWrapper}>
 											{(startup.logo).slice(-3) === "svg" ? <ImageSvg style={styles.listCardImage} source={{ uri: startup.logo }}/> : <Image style={[styles.listCardImage, {resizeMode: 'contain'}]} source={{ uri: startup.logo }}/>}
 											<Text style={styles.listCardText}>{startup.name}</Text>

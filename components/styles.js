@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions, Platform } from 'react-native';
 
 export const styles = StyleSheet.create({
   inner: {
@@ -112,7 +112,14 @@ export const styles = StyleSheet.create({
     height: 96,
     width: 96,
     marginRight: 16,
-    borderRadius: 150
+    ...Platform.select({
+			ios: {
+        borderRadius: 50
+			},
+			android: {
+        borderRadius: 200
+			},
+		}),
   },
   listCardText: {
     fontSize: 16,
@@ -162,8 +169,15 @@ export const styles = StyleSheet.create({
     height: 106,
     width: 106,
     marginRight: 16,
-    borderRadius: 150,
-    resizeMode: 'contain'
+    resizeMode: 'contain',
+    ...Platform.select({
+			ios: {
+        borderRadius: 60
+			},
+			android: {
+        borderRadius: 150,
+			},
+		}),
   },
   stakeholdersCardText: {
     margin: 4,

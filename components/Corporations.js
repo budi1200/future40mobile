@@ -96,7 +96,7 @@ export default class Corporations extends Component {
 							}
 							else{
   	  		  		return(
-  	  		  		  <TouchableHighlight underlayColor={'rgba(52,73,85,0.1)'} key={index} onPress={() => {changeScreen(corporation, "Corporations")}}>
+  	  		  		  <TouchableHighlight underlayColor={'rgba(52,73,85,0.05)'} key={index} onPress={() => {changeScreen(corporation, "Corporations")}}>
 										<View style={styles.listCardWrapper}>
 											<Image style={styles.listCardImage} source={{ uri: corporation.logo }}/>
 											<Text style={styles.listCardText}>{corporation.name}</Text>

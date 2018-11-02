@@ -117,7 +117,7 @@ export default class Stakeholders extends Component {
                   }
                   else{
                     return(
-                      <TouchableHighlight underlayColor={'rgba(52,73,85,0.1)'} key={index2} onPress={() => {Linking.openURL(sponsor.website)}}>
+                      <TouchableHighlight underlayColor={'rgba(52,73,85,0.05)'} key={index2} onPress={() => {Linking.openURL(sponsor.website)}}>
                           <View style={styles.stakeholdersCardWrapper}>
                             <Image style={styles.stakeholdersCardImage} source={{ uri: sponsor.logo }}/>
                             <Text style={[styles.listCardText, styles.stakeholdersCardText]}>{sponsor.name}</Text>
