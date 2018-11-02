@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, StyleSheet, Dimensions } from 'react-native';
+import { View, Image, StyleSheet, Dimensions, Platform } from 'react-native';
 
 import DrawerButton from './DrawerButton';
 export default class SideDrawer extends Component {
@@ -23,7 +23,7 @@ export default class SideDrawer extends Component {
     return (
       <View style={ styles.container }>
 				<View>
-        	<Image style={{resizeMode: 'contain', height: 100, width: Dimensions.get("window").width * 0.77, backgroundColor: 'red', padding: 5}} source={require('./img/logo.png')}/>
+        	<Image style={styles.sidebarLogo} source={require('./img/logo_black.png')}/>
 				</View>
 
 				<DrawerButton text="Home" icon="home-outline" screen="HomeScreen" active={this.state.currentScreen == "HomeScreen" ? true : false} currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
@@ -45,5 +45,20 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
 		width: Dimensions.get("window").width * 0.77,
 		height: '100%'
-  }
+	},
+	sidebarLogo: {
+		resizeMode: 'contain', 
+		height: 89, 
+		width: Dimensions.get("window").width * 0.73,
+		...Platform.select({
+			ios: {
+				marginTop: 10, 
+				marginLeft: 12
+			},
+			android: {
+				marginTop: 4, 
+				marginLeft: 6
+			},
+		}),
+	}
 });

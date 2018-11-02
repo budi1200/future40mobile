@@ -45,7 +45,7 @@ class DrawerButton extends Component{
 										bottomTabs: {
 											options: {
 												topBar: {
-													visible: false
+													visible: (Platform.OS == "ios" ? false : true)
 												}
 											},
 											children: [
