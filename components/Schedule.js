@@ -145,7 +145,7 @@ export default class Schedule extends Component {
 		  return (
         <View>
           <View style={{flex: 0, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center',paddingTop: getStatusBarHeight(), borderBottomColor: '#DCDEE2', borderBottomWidth: 1}}>
-            <MaterialIcons name="menu" color="#1078FF" size={20} style={{flex: 1, paddingLeft: 22}}/>
+            <MaterialIcons name="menu" color="#1078FF" size={20} style={{flex: 1, paddingLeft: 22}} onPress={() => {handleButtonPress("DrawerButton")}} />
             <Text style={{flex: 1, fontSize: 20, color: 'black', paddingTop: 10, paddingBottom: 10}}>Schedule</Text>
             <View style={{flex: 1}}></View>
           </View>

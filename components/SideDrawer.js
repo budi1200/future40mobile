@@ -49,13 +49,14 @@ const styles = StyleSheet.create({
 	sidebarLogo: {
 		resizeMode: 'contain', 
 		height: 89, 
-		width: Dimensions.get("window").width * 0.73,
 		...Platform.select({
 			ios: {
-				marginTop: 10, 
-				marginLeft: 12
+				width: Dimensions.get("window").width * 0.70,
+				marginTop: 30, 
+				marginLeft: 6
 			},
 			android: {
+				width: Dimensions.get("window").width * 0.73,
 				marginTop: 4, 
 				marginLeft: 6
 			},
