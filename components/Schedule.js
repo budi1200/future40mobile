@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import { Text, ScrollView, View, TouchableNativeFeedback, Platform, TouchableHighlight } from 'react-native';
+import { Text, ScrollView, View, TouchableNativeFeedback, Platform, TouchableHighlight, AsyncStorage } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import axios from 'react-native-axios';
@@ -63,7 +63,7 @@ export default class Schedule extends Component {
         if(this.state.mounted){
 	  	    this.setState({
 	  	        [sheet]: result.data[sheet],
-          }, function(){ sheet == "schedule" ? this.getDates() : null})
+          }, () => { sheet == "schedule" ? this.getDates() : null; AsyncStorage.setItem('Schedule', JSON.stringify(this.state[sheet]))})
         }
 	  	})
 	  })
@@ -89,15 +89,22 @@ export default class Schedule extends Component {
 
     this.setState({
         convertedDates: uniqueNames
-    })
+    }, () => {AsyncStorage.setItem('convertedDates', JSON.stringify(this.state.convertedDates))})
 
   }
 
-	componentDidMount(){
-    // Load sheet
-    this.handleSheet("schedule");
+	async componentDidMount(){
     // Adds icon in the top bar
     addIconTopBar("Schedule");
+
+    if((await AsyncStorage.getItem('Schedule')) != null){
+			this.setState({
+        schedule: JSON.parse(await AsyncStorage.getItem('Schedule')),
+        convertedDates: JSON.parse(await AsyncStorage.getItem('convertedDates'))
+			})
+		}
+    // Load sheet
+    this.handleSheet("schedule");
   }
 
   componentDidAppear() {

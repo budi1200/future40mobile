@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import { Text, ScrollView, View, Image } from 'react-native';
+import { Text, ScrollView, View, Image, AsyncStorage } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import axios from 'react-native-axios';
 
@@ -57,21 +57,28 @@ export default class AboutFuture extends Component {
 	// Outputs state with sheets name
 	handleSheet = (sheet) => {
 	  	getSheetUrl(sheet, (url) => {
-	    	axios.get(url).then(result => {
+	    	axios.get(url).then(async (result) => {
 					if(this.state.mounted){
 	    	  	this.setState({
 	    	  	    [sheet]: result.data[sheet],
-						})
+						}, () => {AsyncStorage.setItem(this.props.componentId, JSON.stringify(this.state[sheet]))})
 					}
 	    	})
 	  })
 	}
 
-	componentDidMount(){
-		// Load sheet
-		this.handleSheet("about");
+	async componentDidMount(){
 		// Adds icon in the top bar
 		addIconTopBar("AboutFuture");
+
+		if((await AsyncStorage.getItem(this.props.componentId)) != null){
+			this.setState({
+				about: JSON.parse(await AsyncStorage.getItem(this.props.componentId))
+			})
+		}
+
+		// Load sheet
+		this.handleSheet("about");
 	}
 
 	componentWillUnmount(){
