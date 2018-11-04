@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import { Text, ScrollView, View, TouchableNativeFeedback, Image, Platform, TouchableHighlight} from 'react-native';
+import { Text, ScrollView, View, TouchableNativeFeedback, Image, Platform, TouchableHighlight, AsyncStorage } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import ImageSvg from 'react-native-remote-svg'
 
@@ -61,17 +61,23 @@ export default class Startups extends Component {
 					if(this.state.mounted){
 	    	  	this.setState({
 	    	  	    [sheet]: result.data[sheet],
-						})
+						}, () => {AsyncStorage.setItem(this.props.componentId, JSON.stringify(this.state[sheet]))})
 					}
 	    	})
 	  })
 	}
 
-	componentDidMount(){
-		// Load sheet
-		this.handleSheet("startups");
+	async componentDidMount(){
 		// Adds icon in the top bar
 		addIconTopBar("Startups");
+
+		if((await AsyncStorage.getItem(this.props.componentId)) != null){
+			this.setState({
+				startups: JSON.parse(await AsyncStorage.getItem(this.props.componentId))
+			})
+		}
+		// Load sheet
+		this.handleSheet("startups");
 	}
 
 	componentWillUnmount(){

@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import { Text, View, ScrollView, Image } from 'react-native';
+import { Text, View, ScrollView, Image, AsyncStorage } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import axios from 'react-native-axios';
 import moment from 'moment';
@@ -67,17 +67,23 @@ export default class App extends Component {
         if(this.state.mounted){
           this.setState({
               [sheet]: result.data[sheet],
-          })
+          }, () => {AsyncStorage.setItem(this.props.componentId, JSON.stringify(this.state[sheet]))})
         }
       })
     })
   }
   
-  componentWillMount(){
-    // Loads sheet
-    this.handleSheet("news");
+  async componentDidMount(){
     // Adds icon in the top bar
     addIconTopBar("HomeScreen");
+
+    if((await AsyncStorage.getItem(this.props.componentId)) != null){
+			this.setState({
+				news: JSON.parse(await AsyncStorage.getItem(this.props.componentId))
+			})
+		}
+    // Loads sheet
+    this.handleSheet("news");
   }
 
   componentWillUnmount(){

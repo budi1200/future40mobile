@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import { Text, ScrollView, View, TouchableNativeFeedback, Image, Linking, Platform, TouchableHighlight } from 'react-native';
+import { Text, ScrollView, View, TouchableNativeFeedback, Image, Linking, Platform, TouchableHighlight, AsyncStorage } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import axios from 'react-native-axios';
 
@@ -60,7 +60,7 @@ export default class Stakeholders extends Component {
           if(this.state.mounted){
 	    	    this.setState({
 	    	        [sheet]: result.data[sheet],
-            }, function(){ sheet == "sponsors" ? this.getTypes() : null})
+            }, function(){ sheet == "sponsors" ? this.getTypes() : null; AsyncStorage.setItem(this.props.componentId, JSON.stringify(this.state[sheet]))})
           }
 	    	})
 	  })
@@ -78,15 +78,22 @@ export default class Stakeholders extends Component {
 
     this.setState({
         uniqueTypes: uniqueNames
-    })
+    }, () => {AsyncStorage.setItem("sponsorTypes", JSON.stringify(this.state.uniqueTypes))})
 
   }
 
-	componentDidMount(){
-    // Load sheet
-    this.handleSheet("sponsors");
+	async componentDidMount(){
     // Adds icon in the top bar
 		addIconTopBar("Stakeholders");
+
+		if((await AsyncStorage.getItem(this.props.componentId)) != null){
+			this.setState({
+        sponsors: JSON.parse(await AsyncStorage.getItem(this.props.componentId)),
+        uniqueTypes: JSON.parse(await AsyncStorage.getItem("sponsorTypes"))
+			})
+		}
+    // Load sheet
+    this.handleSheet("sponsors");
   }
   
   componentWillUnmount(){
