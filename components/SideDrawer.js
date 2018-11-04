@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
 		height: 89, 
 		...Platform.select({
 			ios: {
-				width: Dimensions.get("window").width * 0.70,
+				width: Dimensions.get("window").width * 0.60,
 				marginTop: 30, 
 				marginLeft: 6
 			},
