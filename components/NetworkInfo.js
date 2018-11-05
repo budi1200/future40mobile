@@ -32,7 +32,7 @@ export default class NetworkInfo extends Component{
   render() {
       return(
         <View>
-          { this.state.isConnected ? <View style={{ padding: 6, flex: 1}}><Text style={{textAlign: 'center', color: 'red', fontWeight: 'bold'}}>No internet Connection!</Text><Text style={{textAlign: 'center', color: 'red', fontWeight: 'bold'}}>Using only cached data</Text></View> : null }
+          { !this.state.isConnected ? <View style={{ padding: 6 }}><Text style={{textAlign: 'center', color: 'red', fontWeight: 'bold'}}>No internet Connection!</Text><Text style={{textAlign: 'center', color: 'red', fontWeight: 'bold'}}>Using only cached data</Text></View> : null }
         </View>
       );
     }
