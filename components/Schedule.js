@@ -96,6 +96,7 @@ export default class Schedule extends Component {
 	async componentDidMount(){
     // Adds icon in the top bar
     addIconTopBar("Schedule");
+    addIconTopBar("Schedule2");
 
     if((await AsyncStorage.getItem('Schedule')) != null){
 			this.setState({
@@ -110,6 +111,7 @@ export default class Schedule extends Component {
   componentDidAppear() {
     if(!this.props.first){
       addIconTopBar("Schedule2")
+      addIconTopBar("Schedule");
     }
   }
 

@@ -2,7 +2,7 @@ import { Navigation } from 'react-native-navigation'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 // Adds icon to top bar, accepts screen name (string)
-export function addIconTopBar(screen){
+export async function addIconTopBar(screen){
     Promise.all([
         MaterialIcons.getImageSource('menu', 20, 'black')
       ]).then((sources) => {
