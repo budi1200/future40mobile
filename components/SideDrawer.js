@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Image, StyleSheet, Dimensions, Platform } from 'react-native';
 
 import DrawerButton from './DrawerButton';
+import NetworkInfo from './NetworkInfo';
 export default class SideDrawer extends Component {
 
 	constructor(props){
@@ -34,7 +35,7 @@ export default class SideDrawer extends Component {
 				<DrawerButton text="About Future" icon="perm-identity" screen="AboutFuture" active={this.state.currentScreen == "AboutFuture" ? true : false} currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
 				<DrawerButton text="Stakeholders" icon="people-outline" screen="Stakeholders" active={this.state.currentScreen == "Stakeholders" ? true : false} currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
 				<DrawerButton text="Interact" icon="checkbox-marked-outline" screen="Interact" active={this.state.currentScreen == "Interact" ? true : false} currentScreen={this.state.currentScreen} updateCurrentScreen={this.updateCurrentScreen}/>
-				
+				<NetworkInfo/>
       </View>
     )
   }
