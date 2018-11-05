@@ -122,8 +122,6 @@ export default class Schedule extends Component {
 	}
 
 	render() {
-
-    console.log(getStatusBarHeight());
     if(Platform.OS == "android"){
 		  return (
 		    <ScrollView style={{backgroundColor: 'white'}}>
