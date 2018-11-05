@@ -49,7 +49,9 @@ export const styles = StyleSheet.create({
     fontWeight: '400'
   },
   active: {
-    backgroundColor: 'rgba(236, 57, 139, 0.24)'
+    //backgroundColor: 'rgba(236, 57, 139, 0.24)',
+    //backgroundColor: 'rgba(137, 119, 236, 0.24)',
+    backgroundColor: 'rgba(85, 75, 185, 0.24)'
   },
 
   scheduleWrapper: {
@@ -69,7 +71,8 @@ export const styles = StyleSheet.create({
   },
   scheduleBigTimeText: {
     fontSize: 18,
-    color: '#ff72bb',
+    //color: '#ff72bb',
+    color: '#554bb9',
     fontWeight: 'bold'
   },
   scheduleInfoWrapper: {
@@ -237,8 +240,9 @@ export const styles = StyleSheet.create({
     paddingBottom: 8,
   },
   scheduleDetailsTime2: {
-    color: '#ff72bb',
-    fontSize: 18,
+    //color: '#ff72bb',
+    color: '#8977ec',
+    fontSize: 19,
   },
   scheduleDetailsLocation: {
     color: 'black',

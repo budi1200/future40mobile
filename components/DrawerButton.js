@@ -19,8 +19,10 @@ class DrawerButton extends Component{
 						titleDisplayMode: 'alwaysShow',
 					},
 					bottomTab: {
-						selectedIconColor: 'rgb(236, 57, 139)',
-						selectedTextColor: 'rgb(236, 57, 139)'
+						//selectedIconColor: 'rgb(236, 57, 139)',
+						//selectedTextColor: 'rgb(236, 57, 139)'
+						selectedIconColor: 'rgb(137, 119, 236)',
+						selectedTextColor: 'rgb(137, 119, 236)'
 					}
 				});
 				

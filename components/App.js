@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import { Text, View, ScrollView, Image, AsyncStorage } from 'react-native';
+import { Text, View, ScrollView, Image, AsyncStorage, Dimensions } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import axios from 'react-native-axios';
 import moment from 'moment';
@@ -95,7 +95,7 @@ export default class App extends Component {
   render() {
     return (
       <ScrollView>
-          <View style={{flex: 1, height: 100, backgroundColor: 'yellow'}}><Text>Banner Placeholder</Text></View>
+          <Image style={{resizeMode: 'cover', height: 100, width: Dimensions.get("window").width}} source={require('./img/Banner.png')}/>
   	  	    {!this.state.news ? <View style={styles.inner}><LoadingCircle/></View> : this.state.news.map((news, index) => {
               if(moment().isBetween(moment(news.show_from, "YYYY-MM-DD"), moment(news.show_to, "YYYY-MM-DD"), null, [])){
                 return(

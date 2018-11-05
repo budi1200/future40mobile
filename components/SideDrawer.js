@@ -54,12 +54,12 @@ const styles = StyleSheet.create({
 			ios: {
 				width: Dimensions.get("window").width * 0.60,
 				marginTop: 30, 
-				marginLeft: 6
+				marginLeft: 10
 			},
 			android: {
 				width: Dimensions.get("window").width * 0.73,
 				marginTop: 4, 
-				marginLeft: 6
+				marginLeft: 10
 			},
 		}),
 	}
