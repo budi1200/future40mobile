@@ -11,19 +11,20 @@ export const styles = StyleSheet.create({
 
   cardWrapper: {
     flex: 1,
-    borderWidth: 1,
+    borderWidth: 0,
     borderColor: '#dadce0',
-    borderRadius: 8,
-    margin: 6
+    margin: 8
   },
   cardTextWrapper: {
     padding: 12
   },
   cardTitle: {
-    fontSize: 16,
+    color: "black",
+    fontSize: 20,
     paddingBottom: 5
   },
   cardDesc: {
+    fontSize: 16,
     color: '#818181',
     paddingLeft: 4
   },

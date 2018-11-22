@@ -43,7 +43,7 @@ export default class App extends Component {
             name: 'CustomTopBarTitle',
             alignment: 'center',
             passProps: {
-              title: 'Welcome'
+              title: 'Future 4.0'
             }
           }
         },
@@ -95,8 +95,23 @@ export default class App extends Component {
   render() {
     return (
       <ScrollView>
-          <Image style={{resizeMode: 'cover', height: 100, width: Dimensions.get("window").width}} source={require('./img/Banner.png')}/>
-  	  	    {!this.state.news ? <View style={styles.inner}><LoadingCircle/></View> : this.state.news.map((news, index) => {
+          <Image style={{resizeMode: 'cover', height: 60, width: Dimensions.get("window").width}} source={require('./img/Banner2.png')}/>
+		  
+			<View style={styles.cardWrapper}>
+            	<Image style={{ height: 200, width: '100%', resizeMode: 'cover', alignSelf: 'center', borderRadius: 10 }} source={require('./img/Banner.png')}/>
+            	<View style={styles.cardTextWrapper}>
+            		<Text style={[styles.cardTitle, {fontWeight: 'bold'}]}>What is Future 4.0*</Text>
+            		<Text style={styles.cardDesc}>SAŠA Incubator presents a new dimension of the event with 100% focus on the Industry 4.0 and cultarized matchmaking.</Text>
+					<Text style={styles.cardDesc}>Our main goal is to directly connect Industrial Corporations and Startups from the Balkan region which are or could be related to the for Industry 4.0</Text>
+            	</View>
+
+				<View style={{flex: 1, alignItems: 'center'}}>
+					<Image style={{width: 200, height: 60, resizeMode: 'contain', marginBottom: 14}} source={require("./img/schedule.jpg")}/>
+					<Image style={{width: 200, height: 60, resizeMode: 'contain', marginBottom: 14}} source={require("./img/corporations.jpg")}/>
+					<Image style={{width: 200, height: 60, resizeMode: 'contain', marginBottom: 14}} source={require("./img/startups.jpg")}/>
+				</View>
+        	</View>
+  	  	    {/*!this.state.news ? <View style={styles.inner}><LoadingCircle/></View> : this.state.news.map((news, index) => {
               if(moment().isBetween(moment(news.show_from, "YYYY-MM-DD"), moment(news.show_to, "YYYY-MM-DD"), null, [])){
                 return(
   	  	          <View key={index} style={styles.cardWrapper}>
@@ -108,7 +123,7 @@ export default class App extends Component {
                   </View>
   	  	        )
               }
-            })}
+            })*/}
       </ScrollView>
     );
   }
