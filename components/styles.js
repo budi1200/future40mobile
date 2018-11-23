@@ -25,7 +25,8 @@ export const styles = StyleSheet.create({
   },
   cardDesc: {
     fontSize: 16,
-    color: '#818181',
+		//color: '#818181',
+		color: "black",
     paddingLeft: 4
   },
 
