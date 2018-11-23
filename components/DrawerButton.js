@@ -5,6 +5,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { styles } from './styles';
+import { configSch } from './scheduleConfig';
 
 class DrawerButton extends Component{
 
@@ -26,79 +27,7 @@ class DrawerButton extends Component{
 					}
 				});
 				
-				Navigation.setRoot({
-					root: {
-						sideMenu: {
-							id: 'SideMenu',
-							left: {
-								component: {
-									id: 'SideDrawer',
-									name: 'SideDrawer',
-									passProps: {
-										def: 'Schedule'
-									}
-								}
-							},
-							center: {
-								id: 'ChildTest',
-								stack: {
-									id: 'MainStack',
-									children: [{
-										bottomTabs: {
-											options: {
-												topBar: {
-													visible: (Platform.OS == "ios" ? false : true)
-												}
-											},
-											children: [
-												{
-													component: {
-														id: 'Schedule',
-														name: 'Schedule',
-														passProps: {
-															day: '2018-11-27',
-															first: true
-														},
-														options: {
-															bottomTab: {
-																text: 'Day 1',
-																icon: require('./img/calendar27.png')
-															},
-														}
-													},
-												},
-												{
-													component: {
-														id: 'Schedule2',
-														name: 'Schedule',
-														passProps: {
-															day: '2018-11-28'
-														},
-														options: {
-															bottomTab: {
-																text: 'Day 2',
-																icon: require('./img/calendar28.png')
-															}
-														}
-													},
-												},
-											]
-										}
-									}]
-								}
-							}
-						}
-					}
-				});
-				
-				// TODO: Remove?
-				Navigation.mergeOptions( 'SideMenu', {
-					sideMenu: {
-						left: {
-							visible: false
-						}
-					}
-				})
+				Navigation.setRoot(configSch);
 
 			}else{
 
@@ -106,7 +35,7 @@ class DrawerButton extends Component{
 			Navigation.setStackRoot('MainStack', {
 				component: {
 					id: this.props.screen,
-					name: this.props.screen
+					name: this.props.screen,
 				}
 			});
 
@@ -126,8 +55,14 @@ class DrawerButton extends Component{
 	}
 
 	render(){
-		if(Platform.OS == "android"){
-	    return(
+		if(this.props.special){
+			return(
+				<TouchableOpacity onPress={() => this.handleClick(this.props.screen)}>
+					<Image style={{width: 300, height: 85, resizeMode: 'cover'}} source={require("./img/schedule.png")}/>
+				</TouchableOpacity>
+			);
+		}else if(Platform.OS == "android"){
+			return(
 				<TouchableNativeFeedback onPress={() => {this.handleClick(this.props.screen)}}>
 					<View style={[styles.buttonContainer, this.props.active ? styles.active : null]}>
 						{this.props.icon == "home-outline" || this.props.icon == "lightbulb-on-outline" || this.props.icon == "checkbox-marked-outline" ? <MaterialCommunityIcons style={styles.buttonIcon} name={this.props.icon} size={24} color={this.props.active ? 'black' : '#5f6368'}/> : <MaterialIcons style={styles.buttonIcon} name={this.props.icon} size={24} color={this.props.active ? 'black' : '#5f6368'}/>}
@@ -143,7 +78,7 @@ class DrawerButton extends Component{
 							{this.props.icon == "home-outline" || this.props.icon == "lightbulb-on-outline" || this.props.icon == "checkbox-marked-outline" ? <MaterialCommunityIcons style={styles.buttonIcon} name={this.props.icon} size={24} color={this.props.active ? 'black' : '#5f6368'}/> : <MaterialIcons style={styles.buttonIcon} name={this.props.icon} size={24} color={this.props.active ? 'black' : '#5f6368'}/>}
 							<Text style={styles.buttonText}>{this.props.text}</Text>
 						</View>
-				</TouchableHighlight>
+					</TouchableHighlight>
 				)
 			}
 	}

@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import { Text, View, ScrollView, Image, AsyncStorage, Dimensions } from 'react-native';
+import { Text, View, ScrollView, Image, AsyncStorage, Dimensions, TouchableOpacity } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import axios from 'react-native-axios';
 import moment from 'moment';
@@ -20,6 +20,7 @@ import LoadingCircle from './LoadingCircle';
 import { getSheetUrl } from './future40_data';
 import { addIconTopBar, handleButtonPress } from './customFunctions';
 import { styles } from './styles';
+import { configSch } from './scheduleConfig';
 
 firebase.initializeApp(config);
 
@@ -85,12 +86,60 @@ export default class App extends Component {
 	  }
     // Loads sheet
     this.handleSheet("news");
-  }
+	}
 
   componentWillUnmount(){
 		this.setState({
 			mounted: false
 		})
+	}
+
+	changeScreen = (screen) => {
+		if(screen == "Schedule"){
+			Navigation.setDefaultOptions({
+				bottomTabs: {
+					titleDisplayMode: 'alwaysShow',
+				},
+				bottomTab: {
+					//selectedIconColor: 'rgb(236, 57, 139)',
+					//selectedTextColor: 'rgb(236, 57, 139)'
+					selectedIconColor: 'rgb(137, 119, 236)',
+					selectedTextColor: 'rgb(137, 119, 236)'
+				}
+			});
+
+			Navigation.setRoot(configSch);
+		}
+		else{
+			Navigation.setRoot({
+				root: {
+					sideMenu: {
+						id: 'SideMenu',
+						left: {
+							component: {
+								id: 'SideDrawer',
+								name: 'SideDrawer',
+								passProps: {
+									def: screen
+								}
+							}
+						},
+						center: {
+							id: 'ChildTest',
+							stack: {
+								id: 'MainStack',
+								children: [{
+									component: {
+										id: screen,
+										name: screen
+									},
+								}]
+							}
+						}
+					}
+				}
+			});
+		}
 	}
 
   render() {
@@ -112,14 +161,23 @@ export default class App extends Component {
   	  	      <View key={index} style={styles.cardWrapper}>
       	        <Image style={{ height: 200, width: '100%', resizeMode: 'cover', alignSelf: 'center', borderRadius: 12}} source={{ uri: news.picture }}/>
       	        <View style={styles.cardTextWrapper}>
-      	          <Text style={styles.cardTitle}>{news.title}</Text>
-									<HTML html={news.description} baseFontStyle={{color: 'black', fontSize: 16}} imagesMaxWidth={Dimensions.get('window').width} />
+      	          <Text style={[styles.cardTitle, {fontFamily: 'Akrobat-Bold'}]}>{news.title}</Text>
+									<HTML html={news.description} baseFontStyle={{color: 'black', fontSize: 16, fontFamily: 'Akrobat-SemiBold'}} imagesMaxWidth={Dimensions.get('window').width} />
       	        </View>
 								{news.show_buttons ? 
-									<View style={{flex: 1, alignItems: 'center'}}>
-	  								<Image style={{width: 200, height: 60, resizeMode: 'contain'}} source={require("./img/schedule.png")}/>
-	  								<Image style={{width: 200, height: 60, resizeMode: 'contain'}} source={require("./img/corporations.png")}/>
-	  								<Image style={{width: 200, height: 60, resizeMode: 'contain'}} source={require("./img/startups.png")}/>
+									<View style={{flex: 1, alignItems: 'center', marginTop: 25}}>
+
+										<TouchableOpacity onPress={() => this.changeScreen("Schedule")}>
+	  									<Image style={{width: 300, height: 85, resizeMode: 'cover'}} source={require("./img/schedule.png")}/>
+										</TouchableOpacity>
+
+										<TouchableOpacity onPress={() => this.changeScreen("Corporations")}>
+	  									<Image style={{width: 300, height: 85, resizeMode: 'cover'}} source={require("./img/corporations.png")}/>
+										</TouchableOpacity>
+
+										<TouchableOpacity onPress={() => this.changeScreen("Startups")}>
+	  									<Image style={{width: 300, height: 85, resizeMode: 'cover'}} source={require("./img/startups.png")}/>
+										</TouchableOpacity>
 	  							</View> : null}
       	      </View>
   	  	    )
