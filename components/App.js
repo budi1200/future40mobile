@@ -168,7 +168,7 @@ export default class App extends Component {
 									<View style={{flex: 1, alignItems: 'center', marginTop: 25}}>
 
 										<TouchableOpacity onPress={() => this.changeScreen("Schedule")}>
-	  									<Image style={{width: 300, height: 85, resizeMode: 'cover'}} source={require("./img/schedule.png")}/>
+	  									<Image style={{width: 300, height: 84, resizeMode: 'cover'}} source={require("./img/schedule.png")}/>
 										</TouchableOpacity>
 
 										<TouchableOpacity onPress={() => this.changeScreen("Corporations")}>

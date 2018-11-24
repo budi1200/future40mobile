@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
   cardTitle: {
     color: "black",
     fontSize: 20,
-    paddingBottom: 5
+		paddingBottom: 5
   },
   cardDesc: {
     fontSize: 16,
@@ -72,10 +72,10 @@ export const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   scheduleBigTimeText: {
-    fontSize: 18,
+    fontSize: 24,
     //color: '#ff72bb',
     color: '#554bb9',
-    fontWeight: 'bold'
+    fontFamily: 'Akrobat-Bold'
   },
   scheduleInfoWrapper: {
     paddingLeft: 6,
@@ -84,17 +84,19 @@ export const styles = StyleSheet.create({
   },
   scheduleInfoText: {
     color: '#606060',
-    fontSize: 16,
-    fontWeight: 'bold',
+    fontSize: 18,
+    fontFamily: 'Akrobat-Bold',
     marginRight: 100
   },
   scheduleInfoDesc: {
     fontSize: 15,
     paddingTop: 2,
-    color: '#979797'
+		color: '#979797',
+		fontFamily: 'Akrobat-SemiBold'
   },
   scheduleInfoRoom: {
-    color: '#6dcac1',
+		color: '#6dcac1',
+		fontFamily: 'Akrobat-SemiBold'
   },
 
   listCardWrapper: {
@@ -129,7 +131,8 @@ export const styles = StyleSheet.create({
   listCardText: {
     fontSize: 16,
     fontWeight: '400',
-    color: 'black'
+		color: 'black',
+		fontFamily: 'Akrobat-SemiBold'
   },
 
   aboutWrapper: {
@@ -138,12 +141,13 @@ export const styles = StyleSheet.create({
   },
   aboutTitle: {
     color: '#554bb9',
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 24,
+    fontFamily: 'Akrobat-Bold',
     marginBottom: 4,
   },
   aboutDesc: {
-    paddingLeft: 4,
+		paddingLeft: 4,
+		fontFamily: 'Akrobat-SemiBold'
   },
 
   stakeholdersCardWrapper: {
@@ -163,8 +167,8 @@ export const styles = StyleSheet.create({
     borderRadius: 8
   },
   stakeholdersTypeText: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontSize: 22,
+    fontFamily: 'Akrobat-Bold',
     color: '#554bb9',
     paddingTop: 8,
     padding: 6,
@@ -195,10 +199,10 @@ export const styles = StyleSheet.create({
     paddingRight: 16
   },
   detailsTitle: {
-    fontSize: 21,
-    fontWeight: 'bold',
+    fontSize: 24,
     color: '#554bb9',
-    marginBottom: 4,
+		marginBottom: 4,
+		fontFamily: 'Akrobat-Bold'
   },
   detailsDesc: {
     paddingLeft: 4,
@@ -219,7 +223,8 @@ export const styles = StyleSheet.create({
   detailsWebsiteText: {
     color: '#554bb9',
     fontSize: 16,
-    fontWeight: 'bold',
+		fontWeight: 'bold',
+		fontFamily: 'Akrobat-Bold'
   },
 
   scheduleDetailsWrapper:{
@@ -232,36 +237,41 @@ export const styles = StyleSheet.create({
   },
   scheduleDetailsTitle: {
     color: '#554bb9',
-    fontSize: 26,
-    fontWeight: 'bold',
+    fontSize: 28,
+    fontFamily: 'Akrobat-Bold',
     paddingBottom: 8,
   },
   scheduleDetailsTime: {
     color: '#606060',
     fontSize: 16,
-    paddingBottom: 8,
+		paddingBottom: 8,
+		fontFamily: 'Akrobat-SemiBold'
   },
   scheduleDetailsTime2: {
     //color: '#ff72bb',
     color: '#8977ec',
-    fontSize: 19,
+		fontSize: 19,
+		fontFamily: 'Akrobat-SemiBold'
   },
   scheduleDetailsLocation: {
     color: 'black',
     fontSize: 28,
     paddingBottom: 6,
-    marginTop: 8,
+		marginTop: 8,
+		fontFamily: 'Akrobat-SemiBold'
   },
   scheduleDetailsDetails: {
     paddingLeft: 2,
     paddingTop: 6,
     fontSize: 18,
-    color: 'black'
+		color: 'black',
+		fontFamily: 'Akrobat-Bold'
   },
   scheduleDetailsDesc: {
     fontSize: 16,
     color: '#818181',
     padding: 6,
-    marginRight: 16,
+		marginRight: 16,
+		fontFamily: 'Akrobat-SemiBold'
   }
 })

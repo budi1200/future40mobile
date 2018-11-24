@@ -37,7 +37,7 @@ export default class Details extends Component{
         <View style={styles.detailsWrapper}>
           <Text style={styles.detailsTitle}>{this.props.data.name}</Text>
           { this.props.data.description != '' ?
-            <HTML html={this.props.data.description} imagesMaxWidth={Dimensions.get('window').width} />
+            <HTML html={this.props.data.description} baseFontStyle={{fontFamily: 'Akrobat-SemiBold'}} imagesMaxWidth={Dimensions.get('window').width} />
           : null }
         </View>
         
