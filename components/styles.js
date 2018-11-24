@@ -46,14 +46,14 @@ export const styles = StyleSheet.create({
   buttonText: {
     paddingTop: 12,
     paddingBottom: 12,
-    fontSize: 16,
-    color: 'black',
-    fontWeight: '400'
+    fontSize: 18,
+    color: '#474747',
+    fontFamily: 'Akrobat-SemiBold'
   },
   active: {
     //backgroundColor: 'rgba(236, 57, 139, 0.24)',
     //backgroundColor: 'rgba(137, 119, 236, 0.24)',
-    backgroundColor: 'rgba(85, 75, 185, 0.24)'
+    backgroundColor: 'rgba(85, 75, 185, 0.24)',
   },
 
   scheduleWrapper: {

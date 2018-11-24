@@ -23,7 +23,7 @@ class DrawerButton extends Component{
 						//selectedIconColor: 'rgb(236, 57, 139)',
 						//selectedTextColor: 'rgb(236, 57, 139)'
 						selectedIconColor: 'rgb(137, 119, 236)',
-						selectedTextColor: 'rgb(137, 119, 236)'
+						selectedTextColor: 'rgb(137, 119, 236)',
 					}
 				});
 				
@@ -66,7 +66,7 @@ class DrawerButton extends Component{
 				<TouchableNativeFeedback onPress={() => {this.handleClick(this.props.screen)}}>
 					<View style={[styles.buttonContainer, this.props.active ? styles.active : null]}>
 						{this.props.icon == "home-outline" || this.props.icon == "lightbulb-on-outline" || this.props.icon == "checkbox-marked-outline" ? <MaterialCommunityIcons style={styles.buttonIcon} name={this.props.icon} size={24} color={this.props.active ? 'black' : '#5f6368'}/> : <MaterialIcons style={styles.buttonIcon} name={this.props.icon} size={24} color={this.props.active ? 'black' : '#5f6368'}/>}
-						<Text style={styles.buttonText}>{this.props.text}</Text>
+						<Text style={[styles.buttonText, {color: this.props.active ? 'black' : '#474747'}]}>{this.props.text}</Text>
 					</View>
 				</TouchableNativeFeedback>
 			);
@@ -76,7 +76,7 @@ class DrawerButton extends Component{
 					<TouchableHighlight underlayColor={'rgba(52,73,85,0.1)'} onPress={() => {this.handleClick(this.props.screen)}}>
 						<View style={[styles.buttonContainer, this.props.active ? styles.active : null]}>
 							{this.props.icon == "home-outline" || this.props.icon == "lightbulb-on-outline" || this.props.icon == "checkbox-marked-outline" ? <MaterialCommunityIcons style={styles.buttonIcon} name={this.props.icon} size={24} color={this.props.active ? 'black' : '#5f6368'}/> : <MaterialIcons style={styles.buttonIcon} name={this.props.icon} size={24} color={this.props.active ? 'black' : '#5f6368'}/>}
-							<Text style={styles.buttonText}>{this.props.text}</Text>
+							<Text style={[styles.buttonText, {color: this.props.active ? 'black' : '#474747'}]}>{this.props.text}</Text>
 						</View>
 					</TouchableHighlight>
 				)

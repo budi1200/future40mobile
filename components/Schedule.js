@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import { Text, ScrollView, View, TouchableNativeFeedback, Platform, TouchableHighlight, AsyncStorage } from 'react-native';
+import { Text, ScrollView, View, TouchableNativeFeedback, Platform, TouchableHighlight, AsyncStorage, Dimensions } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import axios from 'react-native-axios';
@@ -19,6 +19,7 @@ import { addIconTopBar, handleButtonPress, detailsSchedule } from './customFunct
 import { styles } from './styles';
 
 import { getStatusBarHeight } from 'react-native-status-bar-height';
+
 export default class Schedule extends Component {
 
 	constructor(props){
@@ -106,6 +107,8 @@ export default class Schedule extends Component {
 		}
     // Load sheet
     this.handleSheet("schedule");
+
+    console.log(Dimensions.get('window').height)
   }
 
   componentDidAppear() {
@@ -149,14 +152,23 @@ export default class Schedule extends Component {
       );
     }
     else{
+      //console.log(Dimensions.get('window').height);
+      var margin = '10.5%';
+      if(Dimensions.get('window').height > 880){
+        margin = '11%';
+      }else if(Dimensions.get('window').height > 800){
+        margin = '12.3%';
+      }else if(Dimensions.get('window').height < 590){
+        margin = '12.5%';
+      }
 		  return (
         <View>
           <View style={{flex: 0, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center',paddingTop: getStatusBarHeight(), borderBottomColor: '#DCDEE2', borderBottomWidth: 1}}>
             <MaterialIcons name="menu" color="#1078FF" size={20} style={{flex: 1, paddingLeft: 22}} onPress={() => {handleButtonPress("DrawerButton")}} />
-            <Text style={{flex: 1, fontSize: 20, color: 'black', paddingTop: 10, paddingBottom: 10}}>Schedule</Text>
+            <Text style={{flex: 1, fontSize: 20, color: 'black', paddingTop: 10, paddingBottom: 10, fontFamily: 'Akrobat-Bold'}}>Schedule</Text>
             <View style={{flex: 1}}></View>
           </View>
-		      <ScrollView style={{backgroundColor: 'white'}}>
+		      <ScrollView style={{backgroundColor: 'white', marginBottom: margin}}>
 		  	  	{this.state.schedule ? this.state.schedule.map((event, index) =>{
               if(moment(event.event_date).format('YYYY-MM-DD') == moment(this.props.day).format('YYYY-MM-DD')){
             	    return(

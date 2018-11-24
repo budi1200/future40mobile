@@ -37,6 +37,8 @@
 		2DCD954D1E0B4F2C00145EB5 /* Future40Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* Future40Tests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		544AC16D218B32B000A479A9 /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 544AC16A218B31FC00A479A9 /* libReactNativeNavigation.a */; };
+		5494F26B21A98CB600587B38 /* Akrobat-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5494F26921A98CB600587B38 /* Akrobat-Bold.otf */; };
+		5494F26C21A98CB600587B38 /* Akrobat-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5494F26A21A98CB600587B38 /* Akrobat-SemiBold.otf */; };
 		54B1E60F218B9DD700D40320 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 54B1E5E6218B9DD700D40320 /* MaterialIcons.ttf */; };
 		54B1E610218B9DD700D40320 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 54B1E60E218B9DD700D40320 /* MaterialCommunityIcons.ttf */; };
 		54B1E61A218B9E8B00D40320 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B1E617218B9E7F00D40320 /* libRNVectorIcons.a */; };
@@ -372,6 +374,8 @@
 		2D02E4901E0B4A5D006451C7 /* Future40-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Future40-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		544AC13F218B31FB00A479A9 /* ReactNativeNavigation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeNavigation.xcodeproj; path = "../node_modules/react-native-navigation/lib/ios/ReactNativeNavigation.xcodeproj"; sourceTree = "<group>"; };
+		5494F26921A98CB600587B38 /* Akrobat-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Akrobat-Bold.otf"; sourceTree = "<group>"; };
+		5494F26A21A98CB600587B38 /* Akrobat-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Akrobat-SemiBold.otf"; sourceTree = "<group>"; };
 		54B1E5E6218B9DD700D40320 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		54B1E60E218B9DD700D40320 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		54B1E611218B9E7F00D40320 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
@@ -572,6 +576,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		5494F23F21A98C4300587B38 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5494F26921A98CB600587B38 /* Akrobat-Bold.otf */,
+				5494F26A21A98CB600587B38 /* Akrobat-SemiBold.otf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		54B1E612218B9E7F00D40320 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -636,6 +649,7 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* Future40Tests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
+				5494F23F21A98C4300587B38 /* fonts */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 			);
 			indentWidth = 2;
@@ -1146,6 +1160,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5494F26B21A98CB600587B38 /* Akrobat-Bold.otf in Resources */,
+				5494F26C21A98CB600587B38 /* Akrobat-SemiBold.otf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				54B1E610218B9DD700D40320 /* MaterialCommunityIcons.ttf in Resources */,

@@ -41,6 +41,8 @@
 	<string></string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Akrobat-SemiBold.otf</string>
+		<string>Akrobat-Bold.otf</string>
 		<string>MaterialIcons.ttf</string>
 		<string>MaterialCommunityIcons.ttf</string>
 	</array>
@@ -53,8 +55,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
