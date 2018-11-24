@@ -4,7 +4,8 @@ import { Text, StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   title: {
     fontSize: 20,
-    color: 'black',
+		color: 'black',
+		fontFamily: 'Akrobat-Bold'
   }
 })
 export default class CustomTopBarTitle extends Component{

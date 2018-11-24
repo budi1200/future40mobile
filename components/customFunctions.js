@@ -42,7 +42,8 @@ export function changeScreen(data, currentScreen){
       options: {
         topBar: {
           title: {
-            text: 'Details: ' + data.name
+						text: 'Details: ' + data.name,
+						fontFamily: 'Akrobat-Bold'
           }
         }
       }
@@ -61,7 +62,8 @@ export function detailsSchedule(data, screen){
       options: {
         topBar: {
           title: {
-            text: 'Details'
+						text: 'Details',
+						fontFamily: 'Akrobat-Bold'
           }
         }
       }
