@@ -1,4 +1,4 @@
-# future40mobile
+# Future 4.0 Mobile App
 This is the official mobile app of Future 4.0 Conference, happening on November 27 & 28 in Velenje, Slovenia.
 
 Available On:
